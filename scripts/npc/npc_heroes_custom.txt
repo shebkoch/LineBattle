@@ -1,0 +1,26 @@
+"DOTAHeroes"
+{
+	"npc_dota_hero_bar_test"
+	{
+		"override_hero"	"npc_dota_hero_axe"
+		"Level"						"1"
+		"StatusHealth"				"1000"
+		"StatusMana"				"100"			// Base mana.
+		"StatusManaRegen"			"1"
+		"AttributeBaseStrength"		"0"										// Base strength
+		"AttributeStrengthGain"		"0"										// Strength bonus per level.
+		"AttributeBaseIntelligence"	"0"										// Base intelligence
+		"AttributeIntelligenceGain"	"0"										// Intelligence bonus per level.
+		"AttributeBaseAgility"		"0"										// Base agility
+		"AttributeAgilityGain"		"0"	
+		"AbilityLayout"     		"4"
+		"Ability1" "manaSkill"
+		"Ability2" "test_ability"
+		"Ability3" "zuus_create"
+		"Ability4" "meepo_create"
+		"Model" "models\buildings\building_racks_melee_reference.mdl"
+		"AttackCapabilities"	""
+		"MovementCapabilities" 	"DOTA_UNIT_CAP_MOVE_NONE"
+		"AttackRange"			"0"
+	}
+}

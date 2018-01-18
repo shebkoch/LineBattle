@@ -2,6 +2,117 @@
 "DOTAAbilities"
 {
 	"Version"		"1"
+	"addonName_techies_suicide" 
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"					"ability_datadriven" //надо так у всех писать
+		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_NO_TARGET"  //скилл применяется на unit
+		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"	//на врагов 
+		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_BUILDING" //применяется на героев | на всех юнитов(| это или)
+		"AbilityUnitDamageType"		"DAMAGE_TYPE_PHYSICAL"	//урон магический
+		"SpellImmunityType"			"SPELL_IMMUNITY_ENEMIES_yes" //не проходит сквозь иммунитет к магии
+		"AbilityTextureName"		"techies_suicide"	//текстурка способности
+		
+		"precache" //загрузить частицы и звук для способности
+		{
+			"soundfile"				"soundevents/game_sounds_heroes/game_sounds_techies.vsndevts"		
+			"particle"				"particles/units/heroes/hero_techies/techies_suicide_base.vpcf"
+		}
+		
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"			"0" //дальность применения
+		"AbilityCastPoint"			"0" //скорость каста
+
+		// Damage.
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityDamage"				"100" //урон
+
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"			"0" //кд
+
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"			"0" //манакост
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial" //переменные абилки
+		{
+		//первые две обязательны у скилла 
+			"01"	//идут по порядку 01 02 итд
+			{
+				"var_type"			"FIELD_INTEGER" //тип целоек значение
+				"event"				"20"		//скину файл event, в нем есть то на что скилы работают в данном случае 1 означает на 
+			}
+			"02"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"chance"			"100" //шанс применения
+			}
+			"03"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"radius"			"300"
+			}
+			"04"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"suicide_damage"	"100"
+			}
+			
+		}
+
+		"OnOwnerDied"
+		{
+			"FireSound"
+			{
+				"EffectName"				"Hero_Techies.Suicide"
+				"Target"
+				{
+					"Center"    "CASTER"
+					"Flags" "DOTA_UNIT_TARGET_FLAG_DEAD"
+				}
+			}
+
+			"FireEffect"
+			{
+				"EffectName"       			"particles/units/heroes/hero_techies/techies_suicide_base.vpcf"
+				"EffectAttachType" 			"follow_origin"
+				"Target"
+				{
+					"Center"    "CASTER"
+					"Flags" "DOTA_UNIT_TARGET_FLAG_DEAD"
+				}
+			}
+
+			"ActOnTargets"
+			{
+				"Target"
+				{
+					"Center"  				"CASTER"
+					"Radius" 				"%radius"
+					"Teams" 				"DOTA_UNIT_TARGET_TEAM_ENEMY"
+					"Types" 				"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+				}
+		
+				"Action"    
+				{
+					"Damage"
+					{
+						"Target"
+						{
+							"Center"		"TARGET"
+						}
+						"Type"				"DAMAGE_TYPE_PHYSICAL"
+						"Damage"			"%suicide_damage"
+					}
+				}
+			}
+		}	
+	}
 	"manaSkill"
 	{
 		"BaseClass"						"ability_datadriven"
@@ -21,14 +132,6 @@
 				"AbilityName"	"manaSkill"
 			}
 		}
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"gameover.lua"
-				"Function"		"gameover"
-			}
-		}
 		"OnUpgrade"
 		{
 			"LevelUpAbility"
@@ -46,6 +149,11 @@
 			{
 				"Target"		"CASTER"
 				"AbilityName"	"meepo_create"
+			}
+			"LevelUpAbility"
+			{
+				"Target"		"CASTER"
+				"AbilityName"	"techies_create"
 			}
 		}
 	}
@@ -206,7 +314,7 @@
 			"04"
 			{
 				"var_type"					"FIELD_INTEGER"
-				"heal"						"1"
+				"heal"						"5"
 			}
 			"05"
 			{
@@ -306,13 +414,13 @@
 	{
 		// Основное
 		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"             "ability_datadriven"
-		"AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-		"MaxLevel"				"1"
-		"AbilityTextureName"    "axe_battle_hunger"
-		//"AbilitySharedCooldown"			"5"
-		"AbilityCooldown" 		"5"
-		"AbilityManaCost"				"5"
+		"BaseClass"             	"ability_datadriven"
+		"AbilityBehavior"       	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"MaxLevel"					"1"
+		"AbilityTextureName"    	"addonName_texture_meepo"
+		//"AbilitySharedCooldown"	"5"
+		"AbilityCooldown" 			"2"
+		"AbilityManaCost"			"5"
 		"AbilitySpecial"
 		{
 			"01"
@@ -330,6 +438,33 @@
 			}
 		}
 	}
+	"techies_create"
+	{
+		// Основное
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"             	"ability_datadriven"
+		"AbilityBehavior"       	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"MaxLevel"					"1"
+		"AbilityTextureName"    	"addonName_texture_techies"
+		"AbilityCooldown" 			"15"
+		"AbilityManaCost"			"40"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"addonName_unitID" 	"4"				//указание кого создавать по номеру TODO: составить список юнитов 
+			}
+		}
+		"OnSpellStart"
+		{
+			"RunScript" 
+			{
+				"ScriptFile" 	"create_unit.lua"
+				"Function"		"UnitCreate"
+			}
+		}
+	}	
 	"zuus_create"
 	{
 		// Основное
@@ -337,7 +472,7 @@
 		"BaseClass"             "ability_datadriven"
 		"AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET "
 		"MaxLevel"				"1"
-		"AbilityTextureName"    "axe_battle_hunger"
+		"AbilityTextureName"    "addonName_texture_zuus"
 		//"AbilityTextureName"    "vgui/hud/heroportraits/portrait_zuus"
 		//"AbilitySharedCooldown"			"5"
 		"AbilityCooldown" 		"5"
@@ -363,12 +498,10 @@
 	{
 		// Основное
 		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"             "ability_datadriven"
-		"AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET "
-		"MaxLevel"				"1"
-		"AbilityTextureName"    "axe_battle_hunger"
-		//"AbilityTextureName"    "vgui/hud/heroportraits/portrait_zuus"
-		//"AbilitySharedCooldown"			"5"
+		"BaseClass"             	"ability_datadriven"
+		"AbilityBehavior"       	"DOTA_ABILITY_BEHAVIOR_NO_TARGET "
+		"MaxLevel"					"1"
+		"AbilityTextureName"    	"addonName_texture_witch_doctor"
 		"AbilityCooldown" 				"10"
 		"AbilityManaCost"				"40"
 		"AbilitySpecial"

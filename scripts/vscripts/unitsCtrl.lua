@@ -4,8 +4,12 @@ local addonName_abilities_table = {
 }
 local addonName_events_table = {
 	["OnSpawn"] = 0,
-	["OnAttack"] = 1
-	
+	["OnAttack"] = 1,
+	["OnDeath"] = 2,
+	["OnTime"] = 3,
+	["OnEnemyInRadius"] = 4,
+	["OnTakeDamage"] = 5,
+	["Never"] = 20,
 }
 local ability_count = 2
 local cur_abilities = {
@@ -73,7 +77,7 @@ function unitCtrl()
 	for _,enemy in pairs( enemies ) do
 		if enemy ~= nil and enemy:IsAlive() then
 			local flDist = ( enemy:GetOrigin() - thisEntity:GetOrigin() ):Length2D()
-			if flDist < 400 then 
+			if flDist < attackRadius then 
 				return AttackEvent(enemy)
 			end
 		end
@@ -83,12 +87,14 @@ function unitCtrl()
 	end
 end
 function AttackEvent(enemy)
-	local skillNumber = RandomInt(1,#cur_abilities)--test
-	if cur_ability_events_table[skillNumber] == addonName_events_table["OnAttack"] then
-		if RandomInt(1,100) < cur_ability_chance_table[skillNumber] then
-			return SpellCast(cur_abilities[skillNumber], enemy)
-		else return Attack(enemy)
-		end		
+	for skillNumber,skill in pairs( cur_abilities ) do
+		if cur_ability_events_table[skillNumber] == addonName_events_table["OnAttack"] then
+			if RandomInt(1,100) < cur_ability_chance_table[skillNumber] then
+				print(spellCast)
+				return SpellCast(cur_abilities[skillNumber], enemy)
+			else return Attack(enemy)
+			end		
+		end
 	end
 end
 function Approach(unit)
@@ -115,16 +121,21 @@ function Attack(unit)
 end
 function SpellCast(cast_ability, target)
 	print("spellCast")
-	local targetEI
+	print(target)
 	if target == nil then
-		targetEI = nil
-	else targetEI = target:entindex()
-	end
-	ExecuteOrderFromTable({
+		ExecuteOrderFromTable({
 		UnitIndex = thisEntity:entindex(),
 		OrderType = DOTA_UNIT_ORDER_CAST_NO_TARGET,	
-		AbilityIndex = cast_ability:entindex(),
-		TargetIndex = targetEI
+		AbilityIndex = cast_ability:entindex()
 	})
-	return 0.1
+	else 
+		ExecuteOrderFromTable({
+			UnitIndex = thisEntity:entindex(),
+			OrderType = DOTA_UNIT_ORDER_CAST_TARGET,	
+			AbilityIndex = cast_ability:entindex(),
+			TargetIndex = target:entindex()
+		}) 
+	end
+	
+	return 0.5
 end

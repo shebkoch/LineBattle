@@ -2,6 +2,19 @@
 "DOTAUnits"
 {
 	"Version"	"1"
+	"npc_addonName_hero_techies"{
+		"Model"						"models/heroes/techies/techies.mdl"
+		"BaseClass"					"npc_dota_creature"
+		"StatusHealth"				"50"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementSpeed"				"270"		// Speed.
+		//"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
+		"AttackDamageMin"			"0"
+		"AttackDamageMax"			"0"
+		"AttackRate"				"0"
+		"vscripts"                  "unitsCtrl.lua"
+		"Ability1"					"addonName_techies_suicide"
+	}
 	"npc_addonName_hero_meepo"
 	{
 		"Model"						"models/heroes/meepo/meepo.vmdl"

@@ -2,7 +2,7 @@
 {
 	"npc_dota_hero_bar_test"
 	{
-		"override_hero"	"npc_dota_hero_axe"
+		"override_hero"				"npc_dota_hero_axe"
 		"Level"						"1"
 		"StatusHealth"				"1000"
 		"StatusMana"				"100"			// Base mana.
@@ -14,13 +14,14 @@
 		"AttributeBaseAgility"		"0"										// Base agility
 		"AttributeAgilityGain"		"0"	
 		"AbilityLayout"     		"4"
-		"Ability1" "manaSkill"
-		"Ability2" "test_ability"
-		"Ability3" "zuus_create"
-		"Ability4" "meepo_create"
-		"Model" "models\buildings\building_racks_melee_reference.mdl"
-		"AttackCapabilities"	""
-		"MovementCapabilities" 	"DOTA_UNIT_CAP_MOVE_NONE"
-		"AttackRange"			"0"
+		"Ability1" 					"manaSkill"
+		"Ability2" 					"test_ability"
+		"Ability3" 					"zuus_create"
+		"Ability4" 					"meepo_create"
+		"Ability5" 					"techies_create"
+		"Model" 					"models\buildings\building_racks_melee_reference.mdl"
+		"AttackCapabilities"		""
+		"MovementCapabilities" 		"DOTA_UNIT_CAP_MOVE_NONE"
+		"AttackRange"				"0"
 	}
 }

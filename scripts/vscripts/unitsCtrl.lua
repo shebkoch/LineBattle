@@ -1,6 +1,9 @@
 local addonName_abilities_table = {
 	[1] = "addonName_arc_lightning",
-	[2] = "addonName_voodoo_restoration"
+	[2] = "addonName_voodoo_restoration",
+	[3] = "addonName_techies_suicide",
+	[4] = "addonName_titan_damage",
+	[5] = "addonName_meepo_duplicate"
 }
 local addonName_events_table = {
 	["OnSpawn"] = 0,
@@ -55,18 +58,30 @@ end
 function SpawnEvent() 
 	for i,_cur_ability in pairs(cur_abilities) do
 		if cur_ability_events_table[i] == addonName_events_table["OnSpawn"] then
-			return SpellCast(_cur_ability)
+			if RandomInt(1,100) < cur_ability_chance_table[i] then
+				print(cur_ability_chance_table[i])
+				return SpellCast(_cur_ability)
+			end
 		end
 	end
 	return 0.5
 end
+
+local seconds = 0
+function TimeEvent()
+		
+	return 0.5
+end
 function unitCtrl() 
+	seconds = seconds + 1 
+	if(seconds % 2 == 0) then TimeEvent() end
 	-- for i,_cur_ability in pairs(cur_abilities) do
 		-- print(i)
 		-- print(_cur_ability:GetName())
 		-- print(cur_ability_events_table[i])
 		-- print(cur_ability_chance_table[i])
 	-- end
+	
 	if isFirstThink then
 		isFirstThink = false
 		return SpawnEvent() 
@@ -87,39 +102,47 @@ function unitCtrl()
 	end
 end
 function AttackEvent(enemy)
-	for skillNumber,skill in pairs( cur_abilities ) do
-		if cur_ability_events_table[skillNumber] == addonName_events_table["OnAttack"] then
-			if RandomInt(1,100) < cur_ability_chance_table[skillNumber] then
-				print(spellCast)
-				return SpellCast(cur_abilities[skillNumber], enemy)
-			else return Attack(enemy)
-			end		
+	if enemy ~= nil and enemy:IsAlive() then
+		for skillNumber,skill in pairs( cur_abilities ) do
+			if cur_ability_events_table[skillNumber] == addonName_events_table["OnAttack"] then
+				if RandomInt(1,100) < cur_ability_chance_table[skillNumber] then
+					print(spellCast)
+					return SpellCast(cur_abilities[skillNumber], enemy)
+				else return Attack(enemy)
+				end		
+			end
 		end
 	end
+	return 0.5
 end
 function Approach(unit)
-	thisEntity.bMoving = true
-	local vToEnemy = unit:GetOrigin() - thisEntity:GetOrigin()
-	vToEnemy = vToEnemy:Normalized()
-	ExecuteOrderFromTable({
-		UnitIndex = thisEntity:entindex(),
-		OrderType = DOTA_UNIT_ORDER_MOVE_TO_POSITION,
-		Position = thisEntity:GetOrigin() + vToEnemy * thisEntity:GetIdealSpeed()
-	})
+	if unit ~= nil and unit:IsAlive() then
+		thisEntity.bMoving = true
+		local vToEnemy = unit:GetOrigin() - thisEntity:GetOrigin()
+		vToEnemy = vToEnemy:Normalized()
+		ExecuteOrderFromTable({
+			UnitIndex = thisEntity:entindex(),
+			OrderType = DOTA_UNIT_ORDER_MOVE_TO_POSITION,
+			Position = thisEntity:GetOrigin() + vToEnemy * thisEntity:GetIdealSpeed()
+		})
+	end
 	return 0.5
 end
 function Attack(unit)
-	thisEntity.bMoving = false
-	ExecuteOrderFromTable({
-		UnitIndex = thisEntity:entindex(),
-		OrderType = DOTA_UNIT_ORDER_ATTACK_TARGET,
-		TargetIndex = unit:entindex()
-		--Position = unit:GetOrigin(),
-		--Queue = false,
-	})
+	if unit ~= nil and unit:IsAlive() then
+		thisEntity.bMoving = false
+		ExecuteOrderFromTable({
+			UnitIndex = thisEntity:entindex(),
+			OrderType = DOTA_UNIT_ORDER_ATTACK_TARGET,
+			TargetIndex = unit:entindex()
+			--Position = unit:GetOrigin(),
+			--Queue = false,
+		})
+	end
 	return 0.5
 end
 function SpellCast(cast_ability, target)
+	
 	print("spellCast")
 	print(target)
 	if target == nil then
@@ -135,7 +158,7 @@ function SpellCast(cast_ability, target)
 			AbilityIndex = cast_ability:entindex(),
 			TargetIndex = target:entindex()
 		}) 
-	end
-	
+		end
+		
 	return 0.5
 end

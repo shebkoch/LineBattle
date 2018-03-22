@@ -6,7 +6,7 @@ function LightningJump(keys)
 	local radius = ability:GetLevelSpecialValueFor("radius", (ability:GetLevel() -1))
 	
 	-- Applies damage to the current target
-	ApplyDamage({victim = target, attacker = caster, damage = ability:GetAbilityDamage(), damage_type = ability:GetAbilityDamageType()})
+	ApplyDamage({victim = target, attacker = caster, damage = caster:GetAttackDamage(), damage_type = ability:GetAbilityDamageType()})
 	-- Removes the hidden modifier
 	target:RemoveModifierByName("modifier_arc_lightning_datadriven")
 	

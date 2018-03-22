@@ -1,0 +1,15 @@
+"DOTAUnits"
+{
+		"npc_addonName_visage_wall"
+		{
+		"BaseClass"   "npc_dota_creature"
+		"AttackRate"  "0"
+		"AttackRangeBuffer"   "0"
+		"MovementTurnRate"    "0"
+		"BoundsHullName"    "DOTA_HULL_SIZE_HUGE"
+		"MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_GROUND"
+		"Model"   "models/props_magic/tutorial_barrier.vmdl"
+		"StatusHealth"   "600"
+		"AttackCapabilities"   "DOTA_UNIT_CAP_NO_ATTACK"
+		}
+}

@@ -6,4 +6,6 @@ addonName_unitIDs_table = {
 [5] = "npc_addonName_elder_titan",
 [6] = "npc_addonName_tidehunter",
 [7] = "npc_addonName_dazzle",
+[8] = "npc_addonName_monkey_king",
+[9] = "npc_addonName_kunkka",
 }

@@ -2,6 +2,159 @@
 "DOTAAbilities"
 {
 	"Version"		"1"
+	"addonName_kunkka_black_mark"
+	{
+		"BaseClass"					"ability_datadriven"
+		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY" 
+		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_BASIC"
+		"AbilityCooldown"			"17"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"death_time"		"3"
+			}
+		}
+		
+		"OnSpellStart"
+		{
+			
+			//"FireSound"
+			"ApplyModifier"
+			{
+				"ModifierName"		"modifier_black_mark"
+				"Target"			"TARGET"
+			}
+		}
+		"Modifiers"
+		{
+			"modifier_black_mark"
+			{
+				"Duration"				"%death_time"
+				"StatusEffectName"     	"particles/status_fx/status_effect_nullifier.vpcf"//TODO:
+				//"StatusEffectName"    "particles/status_fx/status_effect_nullifier_slow.vpcf"
+				"StatusEffectPriority" 	"10"
+				"OnDestroy"
+				{
+					"Damage"
+					{
+						"Type"		"DAMAGE_TYPE_PHYSICAL"		
+						"Damage"	"999999"
+						"Target"	"TARGET"
+					}
+				}
+			}
+		}
+	}	
+	"addonName_visage_create_wall"
+	{
+		"BaseClass"						"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER" 
+				"event"					"0"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"chance"				"100" 
+			}
+		}	
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"		"abilities.lua"
+				"Function"			"addonName_visage_create_wall"
+			}
+		}
+	}
+	"addonName_monkey_king_bonus_damage"
+	{
+		
+		"BaseClass"				"ability_datadriven"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"bonus_attack"					"10"
+			}
+		}
+		"Modifiers"
+		{
+			"addonName_monkey_king_bonus_damage_modifier"
+			{
+				"Passive"	"1"
+				"IsHidden"	"1"
+				"OnAttack"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"abilities.lua"
+						"Function"		"addonName_monkey_king_bonus_damage"	
+					}
+				}
+			}	
+		}
+	}
+	"addonName_focus_fire"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	
+		"AbilityTextureName"			"windrunner_focusfire"
+		"AbilityCastRange"				"2000"
+		"AbilityCastPoint"				"0"
+		
+		"AbilityCooldown"				"0"
+		"AbilityManaCost"				"0"
+			
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"bonus_attack_speed"			"500"
+			}
+			"02"
+			{
+			
+				"var_type"						"FIELD_INTEGER"
+				"focus_fire_duration"			"3"
+			}
+		}
+		"OnSpellStart"
+		{
+				"ApplyModifier"
+				{
+					"ModifierName"	"modifier_addonName_focus_fire"
+					"Target" 		"CASTER"
+					"Duration"		"%focus_fire_duration"
+				}
+		}
+		
+		
+		"Modifiers"
+		{
+			"modifier_addonName_focus_fire"
+			{
+				"IsHidden"			"0"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%bonus_attack_speed"
+				}
+			}
+		}
+	}
 	"addonName_shallow_grave"
 	{
 		// General
@@ -60,7 +213,7 @@
 			"04"
 			{
 				"var_type"			"FIELD_FLOAT"
-				"health_regen"		"60"
+				"health_regen"		"100"
 			}
 		}
 

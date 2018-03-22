@@ -16,28 +16,30 @@ colors = {"legendary" : "#D32CE6", "rare": "#4B69FF", "common" : "#B0C3D9",
 
 rare_colors = {"легендарный" : "legendary", "редкость" : "rare", "обычный": "common"}
 type_colors = {"саппорт": "green","особый" : "purple", "дамагер" : "red", "танк" : "blue"}
-hp_colors = {"средне": "yellow", "мало" : "green", "много" : "blue"}
-speed_colors = {"средняя": "yellow", "медленная" : "green"}
-dist_colors = {"средняя": "yellow","нет":"white", "низкая":"green"}
+hp_colors = {"очень мало": "white", "средне": "yellow", "мало" : "green", "много" : "blue"}
+speed_colors = {"высокая":"purple", "средняя": "yellow", "медленная" : "green"}
+dist_colors = {"высокая": "purple", "средняя": "yellow","нет":"white", "низкая":"green"}
 attack_type_colors = {"нет":"white", "дальник": "red", "ближник" : "blue"}
 damage_colors = {"средний" : "yellow", "нет" : "white", "низкий":"green","высокий":"red"}
           
-hp_dict = {"средне": 100, "мало" : 30, "много":400}
-speed_dict = {"средняя": 250, "медленная": 150}
-dist_dict = {"средняя": 600,"нет":0,"низкая" : 200}
+hp_dict = {"средне": 150, "мало" : 80,"очень мало" : 30, "много":600}
+speed_dict = {"высокая" : 250,"средняя": 200, "медленная": 150}
+dist_dict = {"высокая": 600, "средняя": 400,"нет":0,"низкая" : 200}
 attack_type_dict = {"нет":"DOTA_UNIT_CAP_RANGED_ATTACK", "дальник": "DOTA_UNIT_CAP_RANGED_ATTACK","ближник" :"DOTA_UNIT_CAP_MELEE_ATTACK"}
-damage_dict = {"средний" : 50, "нет" : 0, "низкий" : 15,"высокий":100}
+damage_dict = {"средний" : 40, "нет" : 0, "низкий" : 15,"высокий":100}
 event_dict = {"спаун":0,"атака":1,"смерть":2,"рядом_враг":4,"урон":5,"никогда":20,"время":3,}
 
 translate_dict = {"легендарный":"legendary","редкий":"rare","обычный":"common","саппорт":"support",
-				"особый":"special","дамагер":"dpc","танк":"tank","средне":"medium","мало":"small",
+				"особый":"special","дамагер":"dd","танк":"durable","средне":"medium","мало":"small",
 				"много":"large","средняя":"medium","медленная":"small","средняя":"medium","нет":"none",
-				"низкая":"small","дальник":"ranged","ближник":"melee","средний":"medium","низкий":"small","высокий":"large"}
+				"низкая":"small","дальник":"ranged","ближник":"melee","средний":"medium","низкий":"small","высокий":"large",
+                                "очень мало": "very small", "высокая" : "high"}
 #start
 main_xml.write(main_xml_template.read())
 main_xml.write('''<Panel id="AbilitiesPickScreen">\n''')
 npc_abilities_custom.write(npc_abilities_custom_template.read())
 npc_units_custom.write('''
+#base "npc_mobs_custom.txt"
 "DOTAUnits"
 {
 	"Version"	"1"
@@ -49,6 +51,7 @@ addon_russian.write(''' "lang"
 "Tokens"
 {		
 "addon_game_name"   "Line Battle"
+"HeroName_npc_dota_hero_axe"					"Tower"
 "DOTA_Tooltip_Ability_manaSkill"  				"Mana"  
 "DOTA_Tooltip_Ability_manaSkill_Description"  	"это повысит твой мана реген"\n''')
 addon_english.write(''' "lang"
@@ -57,6 +60,7 @@ addon_english.write(''' "lang"
 "Tokens"
 {		
 "addon_game_name"   "Line Battle"
+"HeroName_npc_dota_hero_axe"					"Tower"
 "DOTA_Tooltip_Ability_manaSkill"  				"Mana"  
 "DOTA_Tooltip_Ability_manaSkill_Description"  	"use for increase your mana regen"\n''')
 unitsTable.write("addonName_unitIDs_table = {\n") #если менять то не забыть поменять в create_unit
@@ -72,13 +76,16 @@ for setting in settings:
     npc_units_custom.write('''"ProjectileSpeed" "900"\n''')
     npc_units_custom.write('''"AttackRangeBuffer"   "0"\n''')
     npc_units_custom.write('''"MovementTurnRate"    "0.5"\n''')
+    npc_units_custom.write('''"BoundsHullName"    "DOTA_HULL_SIZE_HUGE"\n''')
     if(settingKV.get("логика") == "сложный"):
         npc_units_custom.write('''"vscripts"   "'''+ settingKV["имя"] + '''.lua"\n''')
     else:
         npc_units_custom.write('''"vscripts"   "unitsCtrl.lua"\n''')
+    if(settingKV.get("снаряд") != None):
+        npc_units_custom.write('''"ProjectileModel"  "''' + str(settingKV.get("снаряд"))+ '''"\n''') 
     npc_units_custom.write('''"MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_GROUND"''')
     
-    npc_units_custom.write('''"Model"   "''' + str(settingKV["модель"]) + "\"\n")
+    npc_units_custom.write('''"Model"   "''' + str(settingKV["модель"]) + "\"\n")   
     npc_units_custom.write('''"StatusHealth"   "''' + str(hp_dict[settingKV["хп"]]) + "\"\n")
     npc_units_custom.write('''"MovementSpeed"   "''' + str(speed_dict[settingKV["скорость"]]) + "\"\n")   
     npc_units_custom.write('''"AttackRange"   "''' + str(dist_dict[settingKV["дальность"]]) + "\"\n")   
@@ -149,10 +156,10 @@ rarity:    '''+"<font color=\'"+colors[rare_colors[settingKV["редкость"]
     }
     }\n''')
 #panorama addSkill
-    main_xml.write('''<Button style="background-image: url('file://{images}/addonName_texture_'''+settingKV["имя"]+'''.png');"
+    main_xml.write('''<Button
     class = "PickButton" id="''' + settingKV["имя"]+ "_create\"" +
     ''' onmouseover="DOTAShowAbilityTooltip('''+ settingKV["имя"]+'''_create)" onmouseout="DOTAHideAbilityTooltip()"'''+
-    ''' onactivate="onBtnTestClick(\''''+ settingKV["имя"]+ "_create\')\"></Button>\n")
+    ''' onactivate="onBtnTestClick(\''''+ settingKV["имя"]+ '''_create')"><Image src="file://{resources}/images/addonName_texture_''' + settingKV["имя"]+'''.png"></Image></Button>\n''')
     
 
 main_xml.write('''\t</Panel>\n\t</Panel>\n</root>''')

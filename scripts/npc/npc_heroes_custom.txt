@@ -4,6 +4,8 @@
 	{
 		
 		"override_hero"				"npc_dota_hero_axe"
+		"SoundSet" 					"npc_dota_neutral_kobold"
+		"IdleSoundLoop" 			"npc_dota_neutral_kobold"
 		"DisableWearables" 			"1"
 		"Level"						"1"
 		"StatusHealth"				"1000"
@@ -17,6 +19,8 @@
 		"AttributeAgilityGain"		"0"	
 		"AbilityLayout"     		"7"
 		"Ability1" 					"manaSkill"
+		//"Ability2"					"addonName_kunkka_black_mark"
+		//"Ability2"					"addonName_focus_fire"
 		//"Ability2"					"addonName_shallow_grave"
 		//"Ability2" 					"witch_doctor_create"
 		//"Ability3" 					"zeus_create"

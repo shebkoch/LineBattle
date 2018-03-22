@@ -1,4 +1,5 @@
 
+#base "npc_mobs_custom.txt"
 "DOTAUnits"
 {
 	"Version"	"1"
@@ -10,10 +11,11 @@
 "ProjectileSpeed" "900"
 "AttackRangeBuffer"   "0"
 "MovementTurnRate"    "0.5"
+"BoundsHullName"    "DOTA_HULL_SIZE_HUGE"
 "vscripts"   "unitsCtrl.lua"
 "MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_GROUND""Model"   "models/heroes/techies/techies.mdl"
 "StatusHealth"   "30"
-"MovementSpeed"   "250"
+"MovementSpeed"   "200"
 "AttackRange"   "0"
 "AttackCapabilities"   "DOTA_UNIT_CAP_RANGED_ATTACK"
 "AttackDamageMin"   "0"
@@ -41,10 +43,11 @@
 "ProjectileSpeed" "900"
 "AttackRangeBuffer"   "0"
 "MovementTurnRate"    "0.5"
+"BoundsHullName"    "DOTA_HULL_SIZE_HUGE"
 "vscripts"   "unitsCtrl.lua"
 "MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_GROUND""Model"   "models/heroes/meepo/meepo.vmdl"
 "StatusHealth"   "30"
-"MovementSpeed"   "250"
+"MovementSpeed"   "200"
 "AttackRange"   "200"
 "AttackCapabilities"   "DOTA_UNIT_CAP_MELEE_ATTACK"
 "AttackDamageMin"   "15"
@@ -71,14 +74,16 @@
 "ProjectileSpeed" "900"
 "AttackRangeBuffer"   "0"
 "MovementTurnRate"    "0.5"
+"BoundsHullName"    "DOTA_HULL_SIZE_HUGE"
 "vscripts"   "unitsCtrl.lua"
+"ProjectileModel"  "particles/units/heroes/hero_witchdoctor/witchdoctor_base_attack.vpcf"
 "MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_GROUND""Model"   "models/heroes/witchdoctor/witchdoctor.vmdl"
-"StatusHealth"   "100"
-"MovementSpeed"   "250"
+"StatusHealth"   "150"
+"MovementSpeed"   "200"
 "AttackRange"   "600"
 "AttackCapabilities"   "DOTA_UNIT_CAP_RANGED_ATTACK"
-"AttackDamageMin"   "50"
-"AttackDamageMax"   "50"
+"AttackDamageMin"   "40"
+"AttackDamageMax"   "40"
 "Ability1"	"addonName_voodoo_restoration"
 "Creature"
 	    {
@@ -99,15 +104,28 @@
 "ProjectileSpeed" "900"
 "AttackRangeBuffer"   "0"
 "MovementTurnRate"    "0.5"
+"BoundsHullName"    "DOTA_HULL_SIZE_HUGE"
 "vscripts"   "unitsCtrl.lua"
+"ProjectileModel"  "particles/econ/items/zeus/lightning_weapon_fx/zuus_base_attack_arc_immortal_lightning.vpcf"
 "MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_GROUND""Model"   "models/heroes/zeus/zeus.vmdl"
-"StatusHealth"   "30"
-"MovementSpeed"   "250"
-"AttackRange"   "600"
+"StatusHealth"   "80"
+"MovementSpeed"   "200"
+"AttackRange"   "400"
 "AttackCapabilities"   "DOTA_UNIT_CAP_RANGED_ATTACK"
-"AttackDamageMin"   "50"
-"AttackDamageMax"   "50"
+"AttackDamageMin"   "40"
+"AttackDamageMax"   "40"
 "Ability1"	"addonName_arc_lightning"
+"Creature"
+	    {
+			"AttachWearables"
+			{
+			"Wearable1" { "ItemDef" "593"}
+			"Wearable2" { "ItemDef" "604"}
+			"Wearable3" { "ItemDef" "605"}
+			"Wearable4" { "ItemDef" "606"}
+			"Wearable5" { "ItemDef" "607"}
+			}
+		}
 }
 "npc_addonName_elder_titan"
 {
@@ -117,14 +135,15 @@
 "ProjectileSpeed" "900"
 "AttackRangeBuffer"   "0"
 "MovementTurnRate"    "0.5"
+"BoundsHullName"    "DOTA_HULL_SIZE_HUGE"
 "vscripts"   "unitsCtrl.lua"
 "MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_GROUND""Model"   "models/heroes/elder_titan/elder_titan.vmdl"
-"StatusHealth"   "400"
+"StatusHealth"   "600"
 "MovementSpeed"   "150"
 "AttackRange"   "200"
 "AttackCapabilities"   "DOTA_UNIT_CAP_MELEE_ATTACK"
-"AttackDamageMin"   "50"
-"AttackDamageMax"   "50"
+"AttackDamageMin"   "40"
+"AttackDamageMax"   "40"
 "Ability1"	"addonName_titan_damage"
 "Creature"
 	    {
@@ -146,9 +165,10 @@
 "ProjectileSpeed" "900"
 "AttackRangeBuffer"   "0"
 "MovementTurnRate"    "0.5"
+"BoundsHullName"    "DOTA_HULL_SIZE_HUGE"
 "vscripts"   "unitsCtrl.lua"
 "MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_GROUND""Model"   "models/heroes/tidehunter/tidehunter.vmdl"
-"StatusHealth"   "400"
+"StatusHealth"   "600"
 "MovementSpeed"   "150"
 "AttackRange"   "200"
 "AttackCapabilities"   "DOTA_UNIT_CAP_MELEE_ATTACK"
@@ -174,10 +194,12 @@
 "ProjectileSpeed" "900"
 "AttackRangeBuffer"   "0"
 "MovementTurnRate"    "0.5"
+"BoundsHullName"    "DOTA_HULL_SIZE_HUGE"
 "vscripts"   "dazzle.lua"
+"ProjectileModel"  "particles/units/heroes/hero_dazzle/dazzle_base_attack.vpcf"
 "MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_GROUND""Model"   "models/heroes/dazzle/dazzle.vmdl"
-"StatusHealth"   "30"
-"MovementSpeed"   "250"
+"StatusHealth"   "80"
+"MovementSpeed"   "200"
 "AttackRange"   "600"
 "AttackCapabilities"   "DOTA_UNIT_CAP_RANGED_ATTACK"
 "AttackDamageMin"   "15"
@@ -191,6 +213,66 @@
 			"Wearable2" { "ItemDef" "264"}
 			"Wearable3" { "ItemDef" "265"}
 			"Wearable4" { "ItemDef" "266"}
+			}
+		}
+}
+"npc_addonName_monkey_king"
+{
+"BaseClass"   "npc_dota_creature"
+"AttackRate"  "1.0"
+"AttackRangeBuffer"   "0"
+"ProjectileSpeed" "900"
+"AttackRangeBuffer"   "0"
+"MovementTurnRate"    "0.5"
+"BoundsHullName"    "DOTA_HULL_SIZE_HUGE"
+"vscripts"   "unitsCtrl.lua"
+"MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_GROUND""Model"   "models/heroes/monkey_king/monkey_king.vmdl"
+"StatusHealth"   "150"
+"MovementSpeed"   "250"
+"AttackRange"   "400"
+"AttackCapabilities"   "DOTA_UNIT_CAP_MELEE_ATTACK"
+"AttackDamageMin"   "40"
+"AttackDamageMax"   "40"
+"Ability1"	"addonName_monkey_king_bonus_damage"
+"Creature"
+	    {
+			"AttachWearables"
+			{
+			"Wearable1" { "ItemDef" "594"}
+			"Wearable2" { "ItemDef" "608"}
+			"Wearable3" { "ItemDef" "609"}
+			"Wearable4" { "ItemDef" "657"}
+			}
+		}
+}
+"npc_addonName_kunkka"
+{
+"BaseClass"   "npc_dota_creature"
+"AttackRate"  "1.0"
+"AttackRangeBuffer"   "0"
+"ProjectileSpeed" "900"
+"AttackRangeBuffer"   "0"
+"MovementTurnRate"    "0.5"
+"BoundsHullName"    "DOTA_HULL_SIZE_HUGE"
+"vscripts"   "kunkka.lua"
+"MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_GROUND""Model"   "models/heroes/kunkka/kunkka.vmdl"
+"StatusHealth"   "150"
+"MovementSpeed"   "250"
+"AttackRange"   "200"
+"AttackCapabilities"   "DOTA_UNIT_CAP_MELEE_ATTACK"
+"AttackDamageMin"   "40"
+"AttackDamageMax"   "40"
+"Ability1"	"addonName_kunkka_black_mark"
+"Creature"
+	    {
+			"AttachWearables"
+			{
+			"Wearable1" { "ItemDef" "10"}
+			"Wearable2" { "ItemDef" "11"}
+			"Wearable3" { "ItemDef" "12"}
+			"Wearable4" { "ItemDef" "14"}
+			"Wearable5" { "ItemDef" "81"}
+			"Wearable6" { "ItemDef" "357"}
 			}
 		}
 }

@@ -9,7 +9,7 @@ function unitCtrl()
 	local allies = FindUnitsInRadius( thisEntity:GetTeamNumber(), thisEntity:GetOrigin(), nil, 1250, DOTA_UNIT_TARGET_TEAM_FRIENDLY , DOTA_UNIT_TARGET_ALL, DOTA_UNIT_TARGET_FLAG_NONE, FIND_ANY_ORDER, false )
 	for _,ally in pairs( allies ) do
 		if ally ~= nil and ally:IsAlive() then
-			if ally:GetHealthPercent () < 15 then
+			if ally:GetHealthPercent () < 40 then
 				local flDist = ( ally:GetOrigin() - thisEntity:GetOrigin() ):Length2D()
 				if flDist < attackRadius then 
 					return SpellCast(thisEntity:FindAbilityByName("addonName_shallow_grave"), ally)
@@ -30,8 +30,10 @@ function unitCtrl()
 	end
 end
 function Approach(unit)
-	if unit ~= nil and unit:IsAlive() then
-		thisEntity.bMoving = true
+	if unit ~= nil and unit:IsAlive() and not thisEntity.bMoving then
+		if(not unit:IsHero()) then 
+			thisEntity.bMoving = true
+		end
 		local vToEnemy = unit:GetOrigin() - thisEntity:GetOrigin()
 		vToEnemy = vToEnemy:Normalized()
 		ExecuteOrderFromTable({
@@ -53,7 +55,7 @@ function Attack(unit)
 			--Queue = false,
 		})
 	end
-	return 0.5
+	return 1
 end
 function SpellCast(cast_ability, target)
 	print("spellCast")

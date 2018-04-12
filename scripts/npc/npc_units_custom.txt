@@ -13,6 +13,7 @@
 "MovementTurnRate"    "0.5"
 "BoundsHullName"    "DOTA_HULL_SIZE_HUGE"
 "vscripts"   "unitsCtrl.lua"
+"ModelScale"  "0.8"
 "MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_GROUND""Model"   "models/heroes/techies/techies.mdl"
 "StatusHealth"   "30"
 "MovementSpeed"   "200"
@@ -75,7 +76,7 @@
 "AttackRangeBuffer"   "0"
 "MovementTurnRate"    "0.5"
 "BoundsHullName"    "DOTA_HULL_SIZE_HUGE"
-"vscripts"   "unitsCtrl.lua"
+"vscripts"   "witch_doctor.lua"
 "ProjectileModel"  "particles/units/heroes/hero_witchdoctor/witchdoctor_base_attack.vpcf"
 "MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_GROUND""Model"   "models/heroes/witchdoctor/witchdoctor.vmdl"
 "StatusHealth"   "150"
@@ -84,7 +85,7 @@
 "AttackCapabilities"   "DOTA_UNIT_CAP_RANGED_ATTACK"
 "AttackDamageMin"   "40"
 "AttackDamageMax"   "40"
-"Ability1"	"addonName_voodoo_restoration"
+"Ability1"	"addonName_heal_ward"
 "Creature"
 	    {
 			"AttachWearables"
@@ -169,7 +170,7 @@
 "vscripts"   "unitsCtrl.lua"
 "MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_GROUND""Model"   "models/heroes/tidehunter/tidehunter.vmdl"
 "StatusHealth"   "600"
-"MovementSpeed"   "150"
+"MovementSpeed"   "200"
 "AttackRange"   "200"
 "AttackCapabilities"   "DOTA_UNIT_CAP_MELEE_ATTACK"
 "AttackDamageMin"   "15"
@@ -200,7 +201,7 @@
 "MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_GROUND""Model"   "models/heroes/dazzle/dazzle.vmdl"
 "StatusHealth"   "80"
 "MovementSpeed"   "200"
-"AttackRange"   "600"
+"AttackRange"   "800"
 "AttackCapabilities"   "DOTA_UNIT_CAP_RANGED_ATTACK"
 "AttackDamageMin"   "15"
 "AttackDamageMax"   "15"
@@ -260,8 +261,8 @@
 "MovementSpeed"   "250"
 "AttackRange"   "200"
 "AttackCapabilities"   "DOTA_UNIT_CAP_MELEE_ATTACK"
-"AttackDamageMin"   "40"
-"AttackDamageMax"   "40"
+"AttackDamageMin"   "80"
+"AttackDamageMax"   "80"
 "Ability1"	"addonName_kunkka_black_mark"
 "Creature"
 	    {
@@ -273,6 +274,161 @@
 			"Wearable4" { "ItemDef" "14"}
 			"Wearable5" { "ItemDef" "81"}
 			"Wearable6" { "ItemDef" "357"}
+			}
+		}
+}
+"npc_addonName_enigma"
+{
+"BaseClass"   "npc_dota_creature"
+"AttackRate"  "1.0"
+"AttackRangeBuffer"   "0"
+"ProjectileSpeed" "900"
+"AttackRangeBuffer"   "0"
+"MovementTurnRate"    "0.5"
+"BoundsHullName"    "DOTA_HULL_SIZE_HUGE"
+"vscripts"   "unitsCtrl.lua"
+"MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_GROUND""Model"   "models/heroes/enigma/enigma.vmdl"
+"StatusHealth"   "600"
+"MovementSpeed"   "200"
+"AttackRange"   "200"
+"AttackCapabilities"   "DOTA_UNIT_CAP_MELEE_ATTACK"
+"AttackDamageMin"   "15"
+"AttackDamageMax"   "15"
+"Ability1"	"addonName_enigma_knockback"
+"Ability2"	"addonName_enigma_damage_count"
+"Creature"
+	    {
+			"AttachWearables"
+			{
+			"Wearable1" { "ItemDef" "498"}
+			"Wearable2" { "ItemDef" "559"}
+			"Wearable3" { "ItemDef" "628"}
+			"Wearable4" { "ItemDef" "629"}
+			}
+		}
+}
+"npc_addonName_centaur"
+{
+"BaseClass"   "npc_dota_creature"
+"AttackRate"  "1.0"
+"AttackRangeBuffer"   "0"
+"ProjectileSpeed" "900"
+"AttackRangeBuffer"   "0"
+"MovementTurnRate"    "0.5"
+"BoundsHullName"    "DOTA_HULL_SIZE_HUGE"
+"vscripts"   "centaur.lua"
+"MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_GROUND""Model"   "models/heroes/centaur/centaur.vmdl"
+"StatusHealth"   "150"
+"MovementSpeed"   "250"
+"AttackRange"   "200"
+"AttackCapabilities"   "DOTA_UNIT_CAP_MELEE_ATTACK"
+"AttackDamageMin"   "40"
+"AttackDamageMax"   "40"
+"Ability1"	"addonName_centaur_ultra_stun"
+"Creature"
+	    {
+			"AttachWearables"
+			{
+			"Wearable1" { "ItemDef" "358"}
+			"Wearable2" { "ItemDef" "359"}
+			"Wearable3" { "ItemDef" "360"}
+			"Wearable4" { "ItemDef" "361"}
+			"Wearable5" { "ItemDef" "362"}
+			"Wearable6" { "ItemDef" "363"}
+			"Wearable7" { "ItemDef" "364"}
+			}
+		}
+}
+"npc_addonName_DOOM"
+{
+"BaseClass"   "npc_dota_creature"
+"AttackRate"  "1.0"
+"AttackRangeBuffer"   "0"
+"ProjectileSpeed" "900"
+"AttackRangeBuffer"   "0"
+"MovementTurnRate"    "0.5"
+"BoundsHullName"    "DOTA_HULL_SIZE_HUGE"
+"vscripts"   "unitsCtrl.lua"
+"ModelScale"  "2"
+"MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_GROUND""Model"   "models/heroes/doom/doom.vmdl"
+"StatusHealth"   "600"
+"MovementSpeed"   "150"
+"AttackRange"   "200"
+"AttackCapabilities"   "DOTA_UNIT_CAP_MELEE_ATTACK"
+"AttackDamageMin"   "80"
+"AttackDamageMax"   "80"
+"Ability1"	"addonName_DOOM_burn"
+"Creature"
+	    {
+			"AttachWearables"
+			{
+			"Wearable1" { "ItemDef" "232"}
+			"Wearable2" { "ItemDef" "233"}
+			"Wearable3" { "ItemDef" "234"}
+			"Wearable4" { "ItemDef" "235"}
+			"Wearable5" { "ItemDef" "236"}
+			"Wearable6" { "ItemDef" "237"}
+			"Wearable7" { "ItemDef" "238"}
+			}
+		}
+}
+"npc_addonName_crystal_maiden"
+{
+"BaseClass"   "npc_dota_creature"
+"AttackRate"  "1.0"
+"AttackRangeBuffer"   "0"
+"ProjectileSpeed" "900"
+"AttackRangeBuffer"   "0"
+"MovementTurnRate"    "0.5"
+"BoundsHullName"    "DOTA_HULL_SIZE_HUGE"
+"vscripts"   "crystal_maiden.lua"
+"ProjectileModel"  "particles/units/heroes/hero_witchdoctor/witchdoctor_base_attack.vpcf"
+"MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_GROUND""Model"   "models/heroes/crystal_maiden/crystal_maiden_arcana.vmdl"
+"StatusHealth"   "80"
+"MovementSpeed"   "200"
+"AttackRange"   "800"
+"AttackCapabilities"   "DOTA_UNIT_CAP_RANGED_ATTACK"
+"AttackDamageMin"   "40"
+"AttackDamageMax"   "40"
+"Ability1"	"addonName_crystal_maiden_attack"
+"Creature"
+	    {
+			"AttachWearables"
+			{
+			"Wearable1" { "ItemDef" "38"}
+			"Wearable2" { "ItemDef" "39"}
+			"Wearable3" { "ItemDef" "40"}
+			"Wearable4" { "ItemDef" "41"}
+			"Wearable5" { "ItemDef" "311"}
+			"Wearable6" { "ItemDef" "502"}
+			}
+		}
+}
+"npc_addonName_io"
+{
+"BaseClass"   "npc_dota_creature"
+"AttackRate"  "1.0"
+"AttackRangeBuffer"   "0"
+"ProjectileSpeed" "900"
+"AttackRangeBuffer"   "0"
+"MovementTurnRate"    "0.5"
+"BoundsHullName"    "DOTA_HULL_SIZE_HUGE"
+"vscripts"   "io.lua"
+"ModelScale"  "3"
+"MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_GROUND""Model"   "models/heroes/wisp/wisp.vmdl"
+"StatusHealth"   "600"
+"MovementSpeed"   "150"
+"AttackRange"   "800"
+"AttackCapabilities"   "DOTA_UNIT_CAP_RANGED_ATTACK"
+"AttackDamageMin"   "80"
+"AttackDamageMax"   "80"
+"Ability1"	"addonName_io_death_laser"
+"Creature"
+	    {
+			"AttachWearables"
+			{
+			"Wearable1" { "ItemDef" "9235"}
+			"Wearable2" { "ItemDef" "536"}
 			}
 		}
 }

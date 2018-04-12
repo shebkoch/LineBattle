@@ -3,7 +3,8 @@ local addonName_abilities_table = {
 	[2] = "addonName_voodoo_restoration",
 	[3] = "addonName_techies_suicide",
 	[4] = "addonName_titan_damage",
-	[5] = "addonName_meepo_duplicate"
+	[5] = "addonName_meepo_duplicate",
+	[6] = "addonName_DOOM_burn"
 }
 local addonName_events_table = {
 	["OnSpawn"] = 0,
@@ -72,6 +73,7 @@ function TimeEvent()
 		
 	return 0.5
 end
+local approachRadius = 300
 function unitCtrl() 
 	seconds = seconds + 1 
 	if(seconds % 2 == 0) then TimeEvent() end
@@ -88,17 +90,20 @@ function unitCtrl()
 	end
 	local attackRadius = thisEntity:GetAttackRange()
 	local enemyHero = FindUnitsInRadius( thisEntity:GetTeamNumber(), thisEntity:GetOrigin(), nil, FIND_UNITS_EVERYWHERE, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_HERO, DOTA_UNIT_TARGET_FLAG_NONE, FIND_ANY_ORDER, false )
-	local enemies = FindUnitsInRadius( thisEntity:GetTeamNumber(), thisEntity:GetOrigin(), nil, 1250, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_ALL, DOTA_UNIT_TARGET_FLAG_NONE, FIND_ANY_ORDER, false )
+	local enemies = FindUnitsInRadius( thisEntity:GetTeamNumber(), thisEntity:GetOrigin(), nil, 1250, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_ALL, DOTA_UNIT_TARGET_FLAG_NONE, FIND_CLOSEST, false )
 	for _,enemy in pairs( enemies ) do
 		if enemy ~= nil and enemy:IsAlive() then
 			local flDist = ( enemy:GetOrigin() - thisEntity:GetOrigin() ):Length2D()
 			if flDist < attackRadius then 
 				return AttackEvent(enemy)
 			end
+			else if(flDist < attackRadius + approachRadius) then
+				return Approach(enemy)
+			end
 		end
 	end
 	for _,enemy in pairs( enemyHero ) do
-		return Approach(enemy)
+		 return Approach(enemy)
 	end
 end
 function AttackEvent(enemy)
@@ -116,8 +121,10 @@ function AttackEvent(enemy)
 	return 0.5
 end
 function Approach(unit)
-	if unit ~= nil and unit:IsAlive() then
-		thisEntity.bMoving = true
+	if unit ~= nil and unit:IsAlive() and not thisEntity.bMoving then
+		if(not unit:IsHero()) then 
+			thisEntity.bMoving = true
+		end
 		local vToEnemy = unit:GetOrigin() - thisEntity:GetOrigin()
 		vToEnemy = vToEnemy:Normalized()
 		ExecuteOrderFromTable({
@@ -139,7 +146,7 @@ function Attack(unit)
 			--Queue = false,
 		})
 	end
-	return 0.5
+	return 1
 end
 function SpellCast(cast_ability, target)
 	

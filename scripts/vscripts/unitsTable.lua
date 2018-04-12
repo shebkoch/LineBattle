@@ -8,4 +8,9 @@ addonName_unitIDs_table = {
 [7] = "npc_addonName_dazzle",
 [8] = "npc_addonName_monkey_king",
 [9] = "npc_addonName_kunkka",
+[10] = "npc_addonName_enigma",
+[11] = "npc_addonName_centaur",
+[12] = "npc_addonName_DOOM",
+[13] = "npc_addonName_crystal_maiden",
+[14] = "npc_addonName_io",
 }

@@ -43,25 +43,26 @@ function CAddonTemplateGameMode:InitGameMode()
 end
 local playersReady = 0
 function CAddonTemplateGameMode:StartGame(keys)
-	SendToConsole("r_farz 5000")
+	--SendToConsole("r_farz 5000")
 	playersReady= playersReady + 1
 	if(playersReady == PlayerResource:GetPlayerCount()) then --TODO: spectacor check
 		local heroes = FindUnitsInRadius( DOTA_TEAM_BADGUYS, Vector(0,0,0), nil, FIND_UNITS_EVERYWHERE, DOTA_UNIT_TARGET_TEAM_BOTH, DOTA_UNIT_TARGET_HERO, DOTA_UNIT_TARGET_FLAG_NONE, FIND_ANY_ORDER, false )
 		for k,v in pairs(heroes) do
 			v:Purge(true,true,false,true,true)
-			local ability_count = v:GetAbilityCount()
-			for i = 0, ability_count do
-				local ability = v:GetAbilityByIndex(i)
-				if ability then
-					ability:StartCooldown(ability:GetCooldown(1))
-				end
-			end
+			-- local ability_count = v:GetAbilityCount()
+			-- for i = 0, ability_count do
+				-- local ability = v:GetAbilityByIndex(i)
+				-- if ability then
+					-- ability:StartCooldown(ability:GetCooldown(1))
+				-- end
+			-- end
 		end
 	end
 end
 
 function CAddonTemplateGameMode:OnNPCSpawned(keys)
 	local npc = EntIndexToHScript(keys.entindex)
+	
 	if(npc:IsHero()) then
 		npc:AddNewModifier(npc, nil, "modifier_stunned", {duration = 1000})
 		local ability_count = npc:GetAbilityCount()
@@ -105,7 +106,9 @@ function PrecacheEveryThingFromKV( context )
                             "scripts/npc/npc_abilities_custom.txt",
                             "scripts/npc/npc_heroes_custom.txt",
                             "scripts/npc/npc_abilities_override.txt",
-                            "npc_items_custom.txt"
+							"scripts/npc/npc_units_abilities.txt",
+                            "npc_items_custom.txt",
+							"npc_units_abilities"
                           }
     for _, kv in pairs(kv_files) do
         local kvs = LoadKeyValues(kv)

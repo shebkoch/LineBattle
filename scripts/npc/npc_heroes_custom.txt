@@ -18,7 +18,11 @@
 		"AttributeBaseAgility"		"0"										// Base agility
 		"AttributeAgilityGain"		"0"	
 		"AbilityLayout"     		"7"
+		"RingRadius"                "70"
+		//"BoundsHullName"			"DOTA_HULL_SIZE_BARRACKS"
 		"Ability1" 					"manaSkill"
+		//"Ability2" 					"addonName_heal_ward"
+		//"Ability2"					"addonName_enigma_damage_count"
 		//"Ability2"					"addonName_kunkka_black_mark"
 		//"Ability2"					"addonName_focus_fire"
 		//"Ability2"					"addonName_shallow_grave"

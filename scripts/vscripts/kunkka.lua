@@ -18,6 +18,9 @@ function unitCtrl()
 				end
 				return Attack(enemy)
 			end
+			else if(flDist < attackRadius + approachRadius) then
+				return Approach(enemy)
+			end
 		end
 	end
 	for _,enemy in pairs( enemyHero ) do
@@ -25,8 +28,10 @@ function unitCtrl()
 	end
 end
 function Approach(unit)
-	if unit ~= nil and unit:IsAlive() then
-		thisEntity.bMoving = true
+	if unit ~= nil and unit:IsAlive() and not thisEntity.bMoving then
+		if(not unit:IsHero()) then 
+			thisEntity.bMoving = true
+		end
 		local vToEnemy = unit:GetOrigin() - thisEntity:GetOrigin()
 		vToEnemy = vToEnemy:Normalized()
 		ExecuteOrderFromTable({
@@ -48,7 +53,7 @@ function Attack(unit)
 			--Queue = false,
 		})
 	end
-	return 0.5
+	return 1
 end
 function SpellCast(cast_ability, target)
 	print("spellCast")

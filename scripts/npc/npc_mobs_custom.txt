@@ -9,7 +9,53 @@
 		"BoundsHullName"    "DOTA_HULL_SIZE_HUGE"
 		"MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_GROUND"
 		"Model"   "models/props_magic/tutorial_barrier.vmdl"
+		"ModelScale"  "0.7"
 		"StatusHealth"   "600"
 		"AttackCapabilities"   "DOTA_UNIT_CAP_NO_ATTACK"
+		}
+		"witch_doctor_death_ward_datadriven"
+		{
+			// General
+			//----------------------------------------------------------------
+			"BaseClass"             "npc_dota_creature"
+			"Model"                 "models/heroes/witchdoctor/witchdoctor_ward.vmdl"
+			"ModelScale"            "1.0"
+			"Level"                 "1"
+			"HasInventory"          "0"
+			"Ability1" 				"addonName_heal_ward_control"
+			// Armor
+			//----------------------------------------------------------------
+			"ArmorPhysical"         "2"
+			"MagicalResistance"     "0"
+		   
+			// Attack
+			//----------------------------------------------------------------
+			"AttackCapabilities"    	"DOTA_UNIT_CAP_NO_ATTACK"
+			"AttackDamageType"      	"DAMAGE_TYPE_ArmorPhysical"
+			"AttackDamageMin"       	"0.0"
+			"AttackDamageMax"       	"0.0"
+			"AttackRate"            	"0.22"
+			"AttackAnimationPoint"  	"0.0"
+			"AttackAcquisitionRange"	"700"
+			"AttackRange"           	"600"
+			"ProjectileModel"       	"particles/units/heroes/hero_witchdoctor/witchdoctor_ward_attack.vpcf"
+			"ProjectileSpeed"			"1000"
+		   
+
+			"BoundsHullName"        "DOTA_HULL_SIZE_HERO"
+			"RingRadius"            "70"
+		   
+			//----------------------------------------------------------------
+			"MovementCapabilities"  "DOTA_UNIT_CAP_MOVE_NONE"
+		   
+			// Status
+			//----------------------------------------------------------------
+			"StatusHealth"          "420"
+			"StatusHealthRegen"     "0.0"
+			"StatusMana"            "0"
+			"StatusManaRegen"       "0"
+		   
+		   
+			"vscripts"   "death_ward.lua"
 		}
 }

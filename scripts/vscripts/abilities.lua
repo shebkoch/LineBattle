@@ -53,7 +53,7 @@ function addonName_monkey_king_bonus_damage(keys)
 	caster = keys.caster
 	
 	local jinguStack = caster:FindModifierByName("addonName_monkey_king_bonus_damage_modifier")
-	if(jinguStack:GetStackCount() < 10) then 
+	if(jinguStack:GetStackCount() <= 10) then 
 		caster:SetBaseDamageMax(caster:GetBaseDamageMax()+damagePerAttack)
 		caster:SetBaseDamageMin(caster:GetBaseDamageMin()+damagePerAttack)
 		jinguStack:SetStackCount(jinguStack:GetStackCount() + 1)

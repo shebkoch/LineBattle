@@ -1,0 +1,41 @@
+<root>
+	<styles>
+		<include src="s2r://panorama/styles/custom_game/test.vcss_c" />
+	</styles>
+	<scripts>
+		<include src="s2r://panorama/scripts/custom_game/test.vjs_c" />
+	</scripts>
+	
+	<Panel class="Main">
+	<Label id = "PickText" text = "Choose 5 abilities"></Label><Panel id="AbilitiesPickScreen">
+<Button
+    class = "PickButton" id="techies_create" onmouseover="DOTAShowAbilityTooltip(techies_create)" onmouseout="DOTAHideAbilityTooltip()" onactivate="onBtnTestClick('techies_create')"><Image src="s2r://panorama/images/addonname_texture_techies_png.vtex"></Image></Button>
+<Button
+    class = "PickButton" id="meepo_create" onmouseover="DOTAShowAbilityTooltip(meepo_create)" onmouseout="DOTAHideAbilityTooltip()" onactivate="onBtnTestClick('meepo_create')"><Image src="s2r://panorama/images/addonname_texture_meepo_png.vtex"></Image></Button>
+<Button
+    class = "PickButton" id="witch_doctor_create" onmouseover="DOTAShowAbilityTooltip(witch_doctor_create)" onmouseout="DOTAHideAbilityTooltip()" onactivate="onBtnTestClick('witch_doctor_create')"><Image src="s2r://panorama/images/addonname_texture_witch_doctor_png.vtex"></Image></Button>
+<Button
+    class = "PickButton" id="zeus_create" onmouseover="DOTAShowAbilityTooltip(zeus_create)" onmouseout="DOTAHideAbilityTooltip()" onactivate="onBtnTestClick('zeus_create')"><Image src="s2r://panorama/images/addonname_texture_zeus_png.vtex"></Image></Button>
+<Button
+    class = "PickButton" id="elder_titan_create" onmouseover="DOTAShowAbilityTooltip(elder_titan_create)" onmouseout="DOTAHideAbilityTooltip()" onactivate="onBtnTestClick('elder_titan_create')"><Image src="s2r://panorama/images/addonname_texture_elder_titan_png.vtex"></Image></Button>
+<Button
+    class = "PickButton" id="tidehunter_create" onmouseover="DOTAShowAbilityTooltip(tidehunter_create)" onmouseout="DOTAHideAbilityTooltip()" onactivate="onBtnTestClick('tidehunter_create')"><Image src="s2r://panorama/images/addonname_texture_tidehunter_png.vtex"></Image></Button>
+<Button
+    class = "PickButton" id="dazzle_create" onmouseover="DOTAShowAbilityTooltip(dazzle_create)" onmouseout="DOTAHideAbilityTooltip()" onactivate="onBtnTestClick('dazzle_create')"><Image src="s2r://panorama/images/addonname_texture_dazzle_png.vtex"></Image></Button>
+<Button
+    class = "PickButton" id="monkey_king_create" onmouseover="DOTAShowAbilityTooltip(monkey_king_create)" onmouseout="DOTAHideAbilityTooltip()" onactivate="onBtnTestClick('monkey_king_create')"><Image src="s2r://panorama/images/addonname_texture_monkey_king_png.vtex"></Image></Button>
+<Button
+    class = "PickButton" id="kunkka_create" onmouseover="DOTAShowAbilityTooltip(kunkka_create)" onmouseout="DOTAHideAbilityTooltip()" onactivate="onBtnTestClick('kunkka_create')"><Image src="s2r://panorama/images/addonname_texture_kunkka_png.vtex"></Image></Button>
+<Button
+    class = "PickButton" id="enigma_create" onmouseover="DOTAShowAbilityTooltip(enigma_create)" onmouseout="DOTAHideAbilityTooltip()" onactivate="onBtnTestClick('enigma_create')"><Image src="s2r://panorama/images/addonname_texture_enigma_png.vtex"></Image></Button>
+<Button
+    class = "PickButton" id="centaur_create" onmouseover="DOTAShowAbilityTooltip(centaur_create)" onmouseout="DOTAHideAbilityTooltip()" onactivate="onBtnTestClick('centaur_create')"><Image src="s2r://panorama/images/addonname_texture_centaur_png.vtex"></Image></Button>
+<Button
+    class = "PickButton" id="DOOM_create" onmouseover="DOTAShowAbilityTooltip(DOOM_create)" onmouseout="DOTAHideAbilityTooltip()" onactivate="onBtnTestClick('DOOM_create')"><Image src="s2r://panorama/images/addonname_texture_doom_png.vtex"></Image></Button>
+<Button
+    class = "PickButton" id="crystal_maiden_create" onmouseover="DOTAShowAbilityTooltip(crystal_maiden_create)" onmouseout="DOTAHideAbilityTooltip()" onactivate="onBtnTestClick('crystal_maiden_create')"><Image src="s2r://panorama/images/addonname_texture_crystal_maiden_png.vtex"></Image></Button>
+<Button
+    class = "PickButton" id="io_create" onmouseover="DOTAShowAbilityTooltip(io_create)" onmouseout="DOTAHideAbilityTooltip()" onactivate="onBtnTestClick('io_create')"><Image src="file://{resources}/images/addonname_texture_io.png"></Image></Button>
+	</Panel>
+	</Panel>
+</root>

@@ -1,0 +1,45 @@
+"DOTAHeroes"
+{
+	"npc_dota_hero_bar_test"
+	{
+		
+		"override_hero"				"npc_dota_hero_axe"
+		"SoundSet" 					"npc_dota_neutral_kobold"
+		"IdleSoundLoop" 			"npc_dota_neutral_kobold"
+		"DisableWearables" 			"1"
+		"Level"						"1"
+		"StatusHealth"				"1000"
+		"StatusMana"				"100"			// Base mana.
+		"StatusManaRegen"			"1"
+		"AttributeBaseStrength"		"0"										// Base strength
+		"AttributeStrengthGain"		"0"										// Strength bonus per level.
+		"AttributeBaseIntelligence"	"0"										// Base intelligence
+		"AttributeIntelligenceGain"	"0"										// Intelligence bonus per level.
+		"AttributeBaseAgility"		"0"										// Base agility
+		"AttributeAgilityGain"		"0"	
+		"AbilityLayout"     		"7"
+		"RingRadius"                "70"
+		//"BoundsHullName"			"DOTA_HULL_SIZE_BARRACKS"
+		"Ability1" 					"manaSkill"
+		//"Ability2" 					"addonName_heal_ward"
+		//"Ability2"					"addonName_enigma_damage_count"
+		//"Ability2"					"addonName_kunkka_black_mark"
+		//"Ability2"					"addonName_focus_fire"
+		//"Ability2"					"addonName_shallow_grave"
+		//"Ability2" 					"witch_doctor_create"
+		//"Ability3" 					"zeus_create"
+		//"Ability4" 					"meepo_create"
+		//"Ability5" 					"techies_create"
+		//"Ability5" 					"phoenix_create"
+		//"Ability6" 					"addonName_sun_ray"
+		"Model" 					"models\buildings\building_racks_melee_reference.mdl"
+		"AttackCapabilities"		""
+		"AttackDamageMin"           "80"
+		"AttackDamageMax"           "80"
+		"MovementCapabilities" 		"DOTA_UNIT_CAP_MOVE_NONE"
+		//"AttackRange"				"600"
+		//"ProjectileModel"           "particles/units/heroes/hero_lina/lina_base_attack.vpcf"
+		//"MovementTurnRate"          "0.01"
+		//"ProjectileModel"			"particles\base_attacks\ranged_tower_bad_linear.vpcf"
+	}
+}

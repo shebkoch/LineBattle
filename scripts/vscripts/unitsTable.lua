@@ -1,0 +1,16 @@
+addonName_unitIDs_table = {
+[1] = "npc_addonName_techies",
+[2] = "npc_addonName_meepo",
+[3] = "npc_addonName_witch_doctor",
+[4] = "npc_addonName_zeus",
+[5] = "npc_addonName_elder_titan",
+[6] = "npc_addonName_tidehunter",
+[7] = "npc_addonName_dazzle",
+[8] = "npc_addonName_monkey_king",
+[9] = "npc_addonName_kunkka",
+[10] = "npc_addonName_enigma",
+[11] = "npc_addonName_centaur",
+[12] = "npc_addonName_DOOM",
+[13] = "npc_addonName_crystal_maiden",
+[14] = "npc_addonName_io",
+}

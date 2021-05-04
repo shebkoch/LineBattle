@@ -1,0 +1,745 @@
+﻿// Dota Heroes File
+"DOTAAbilities"
+{
+	"Version"		"1"
+	"addonName_sun_ray" //sun_ray skill
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"ability_datadriven" //надо так у всех писать
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT"  //скилл применяется на unit
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"	//на врагов 
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC" //применяется на героев | на всех юнитов(| это или)
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_PURE"	//урон магический
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO" //не проходит сквозь иммунитет к магии
+		"AbilityTextureName"			"phoenix_sun_ray"	//текстурка способности
+		
+		"precache" //загрузить частицы и звук для способности
+		{
+			"soundfile"				  	"soundevents/game_sounds_heroes/game_sounds_phoenix.vsndevts"
+			"particle"					"particles/units/heroes/hero_phoenix/phoenix_sunray.vpcf"
+			"particle"					"particles/units/heroes/hero_phoenix/phoenix_sunray_beam_friend.vpcf"
+			"particle"					"particles/units/heroes/hero_phoenix/phoenix_sunray_beam_enemy.vpcf"
+			"particle"					"particles/units/heroes/hero_phoenix/phoenix_sunray_debuff.vpcf"
+		}
+		
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"1300" //дальность применения
+		"AbilityCastPoint"				"0.01" //скорость каста
+
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"5" //кд
+
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"0" //манакост
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial" //переменные абилки
+		{
+		//первые две обязательны у скилла 
+			"01"	//идут по порядку 01 02 итд
+			{
+				"var_type"				"FIELD_INTEGER" //тип целоек значение
+				"event"					"0"		//скину файл event, в нем есть то на что скилы работают в данном случае 1 означает на 
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"chance"				"10" //шанс применения
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"radius"				"500" //радиус
+			}
+			"04"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"hp_cost_perc_per_second"		"20"
+			}
+			"05"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"base_dmg"				"0"
+			}
+			"06"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"hp_perc_dmg"			"12"
+			}
+			"07"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"ally_heal"				"0.5"
+			}
+		
+			"08"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"radius"				"130"
+			}
+			"09"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"tick_interval"				"0.2"
+			}
+			"10"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"forward_move_speed"			"250"
+			}
+			"11"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"beam_range"				"1300"
+			}
+			"12"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"turn_rate_initial"			"250"
+			}
+			"13"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"turn_rate"				"20"
+			}
+			"14"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"tooltip_duration"			"6"
+			}
+			// Extra variables
+			"15"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"num_thinkers"				"9"
+			}
+			"16"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"thinker_step"				"150"
+			}
+			"17"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"thinker_radius"			"192"
+			}
+			"18"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"initial_turn_max_duration"		"0.75"
+			}
+				}
+
+		"OnSpellStart" //когда примененятеся скилл
+		{
+			"ApplyModifier"	//применить модификатор
+			{
+				"ModifierName"		"modifier_sun_ray_caster_datadriven"
+				"Target"		"CASTER" //на цель которую был нажат скилл
+			}
+		
+			"FireSound" //проиграть звук
+			{
+				"EffectName"		"Hero_Phoenix.SunRay.Cast"
+				"Target"		"CASTER"
+			}
+			"FireSound"
+			{
+				"EffectName"		"Hero_Phoenix.SunRay.Loop"
+				"Target"		"CASTER"
+			}
+			
+			"RunScript"
+			{
+				"ScriptFile"		"sun_ray.lua"
+				"Function"			"CastSunRay"
+				"particle"			"particles/units/hero_phoenix/sun_ray_.vpcf" //частицы
+			
+				"hp_cost_perc_per_second"	"%hp_cost_perc_per_second"
+				
+				"path_length"			"%beam_range"
+				"num_thinkers"			"%num_thinkers"
+				"thinker_step"			"%thinker_step"
+				"thinker_radius"		"%thinker_radius"
+				
+				"turn_rate_initial"		"%turn_rate_initial"
+				"turn_rate"			"%turn_rate"
+				"initial_turn_max_duration"	"%initial_turn_max_duration"
+				"forward_move_speed"		"%forward_move_speed"
+				
+				"modifier_caster_name"		"modifier_sun_ray_caster_datadriven"
+				"modifier_thinker_name"		"modifier_sun_ray_thinker_datadriven"
+				"modifier_ignore_turn_rate_limit_name"	"modifier_ignore_turn_rate_limit_datadriven"
+				
+				"sub_ability_name"					"phoenix_sun_ray_stop_datadriven"
+				"toggle_move_empty_ability_name"	"phoenix_sun_ray_toggle_move_empty_datadriven"
+				"toggle_move_ability_name"		"phoenix_sun_ray_toggle_move_datadriven"
+			}
+		}		
+
+		"Modifiers"
+		{
+			"modifier_sun_ray_caster_datadriven"	//накладываемый модификатор
+			{
+				"IsHidden"	"1"	//не отображется в панели баффов и дебаффов (0 будет отображаться)
+		
+				
+			}
+		}
+	}
+	"addonName_techies_suicide" 
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"					"ability_datadriven" //надо так у всех писать
+		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_NO_TARGET"  //скилл применяется на unit
+		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"	//на врагов 
+		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_BUILDING" //применяется на героев | на всех юнитов(| это или)
+		"AbilityUnitDamageType"		"DAMAGE_TYPE_PHYSICAL"	//урон магический
+		"SpellImmunityType"			"SPELL_IMMUNITY_ENEMIES_yes" //не проходит сквозь иммунитет к магии
+		"AbilityTextureName"		"techies_suicide"	//текстурка способности
+		
+		"precache" //загрузить частицы и звук для способности
+		{
+			"soundfile"				"soundevents/game_sounds_heroes/game_sounds_techies.vsndevts"		
+			"particle"				"particles/units/heroes/hero_techies/techies_suicide_base.vpcf"
+		}
+		
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"			"0" //дальность применения
+		"AbilityCastPoint"			"0" //скорость каста
+
+		// Damage.
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityDamage"				"100" //урон
+
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"			"0" //кд
+
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"			"0" //манакост
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial" //переменные абилки
+		{
+		//первые две обязательны у скилла 
+			"01"	//идут по порядку 01 02 итд
+			{
+				"var_type"			"FIELD_INTEGER" //тип целоек значение
+				"event"				"20"		//скину файл event, в нем есть то на что скилы работают в данном случае 1 означает на 
+			}
+			"02"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"chance"			"100" //шанс применения
+			}
+			"03"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"radius"			"300"
+			}
+			"04"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"suicide_damage"	"100"
+			}
+			
+		}
+
+		"OnOwnerDied"
+		{
+			"FireSound"
+			{
+				"EffectName"				"Hero_Techies.Suicide"
+				"Target"
+				{
+					"Center"    "CASTER"
+					"Flags" "DOTA_UNIT_TARGET_FLAG_DEAD"
+				}
+			}
+
+			"FireEffect"
+			{
+				"EffectName"       			"particles/units/heroes/hero_techies/techies_suicide_base.vpcf"
+				"EffectAttachType" 			"follow_origin"
+				"Target"
+				{
+					"Center"    "CASTER"
+					"Flags" 	"DOTA_UNIT_TARGET_FLAG_DEAD"
+				}
+			}
+
+			"ActOnTargets"
+			{
+				"Target"
+				{
+					"Center"  				"CASTER"
+					"Radius" 				"%radius"
+					"Teams" 				"DOTA_UNIT_TARGET_TEAM_ENEMY"
+					"Types" 				"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+				}
+		
+				"Action"    
+				{
+					"Damage"
+					{
+						"Target"
+						{
+							"Center"		"TARGET"
+						}
+						"Type"				"DAMAGE_TYPE_PHYSICAL"
+						"Damage"			"%suicide_damage"
+					}
+				}
+			}
+		}	
+	}
+	"manaSkill"
+	{
+		"BaseClass"						"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityManaCost"				"10 30 60 100"
+		"AbilityCooldown"				"0"
+		"AbilityTextureName"    		"addonName_texture_mana"
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"manaSkill.lua"
+				"Function"		"manaRegenGain"
+			}
+			"LevelUpAbility"
+			{
+				"Target"		"CASTER"
+				"AbilityName"	"manaSkill"
+			}
+		}
+		"OnUpgrade"
+		{
+			"LevelUpAbility"
+			{
+				"Target"		"CASTER"
+				"AbilityName"	"test_ability"
+			}
+			
+			"LevelUpAbility"
+			{
+				"Target"		"CASTER"
+				"AbilityName"	"zuus_create"
+			}
+			"LevelUpAbility"
+			{
+				"Target"		"CASTER"
+				"AbilityName"	"meepo_create"
+			}
+			"LevelUpAbility"
+			{
+				"Target"		"CASTER"
+				"AbilityName"	"techies_create"
+			}
+		}
+	}
+	"addonName_arc_lightning"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_DEAD | DOTA_UNIT_TARGET_FLAG_NO_INVIS | DOTA_UNIT_TARGET_FLAG_FOW_VISIBLE"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+		"AbilityTextureName"			"zuus_arc_lightning"
+		
+		"precache"
+		{
+			"particle"		"particles/units/heroes/hero_zuus/zuus_arc_lightning_.vpcf"
+			"particle"		"particles/units/heroes/hero_zuus/zuus_arc_lightning_head.vpcf"
+			"soundfile"		"sounds/weapons/hero/zuus/arc_lightning.vsnd"
+		}
+		
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"850"
+		"AbilityCastPoint"				"0.2"
+
+		// Damage.
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityDamage"					"50"
+
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"1.75"
+
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"0"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"event"					"1"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"chance"				"10"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"radius"				"500 500 500 500"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"jump_count"			"5 7 9 15"
+			}
+			"05"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"jump_delay"			"0.25 0.25 0.25 0.25"
+			}
+		}
+
+		"OnSpellStart"
+		{
+			"ApplyModifier"
+			{
+				"ModifierName"	"modifier_arc_lightning_datadriven"
+				"Target"		"TARGET"
+			}
+		
+			"FireSound"
+			{
+				"EffectName"	"Hero_Zuus.ArcLightning.Cast"
+				"Target"		"CASTER"
+			}
+			
+			"RunScript"
+			{
+				"ScriptFile"	"arc_lightning_lua.lua"
+				"Function"		"NewInstance"
+				"particle"		"particles/units/heroes/hero_zuus/zuus_arc_lightning_.vpcf"
+			}
+		}
+
+		"Modifiers"
+		{
+			"modifier_arc_lightning_datadriven"
+			{
+				"IsHidden"	"1"
+		
+				"OnCreated"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"arc_lightning_lua.lua"
+						"Function"		"LightningJump"
+						"particle"		"particles/units/heroes/hero_zuus/zuus_arc_lightning_.vpcf"
+					}
+				}
+			}
+		}
+	}
+	"addonName_voodoo_restoration"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL"
+		"AbilityTextureName"			"witch_doctor_voodoo_restoration"
+		
+		// Precache
+		//-------------------------------------------------------------------------------------------------------------
+		"precache"
+		{
+			"particle"		"particles/units/heroes/hero_witchdoctor/witchdoctor_voodoo_restoration.vpcf"
+			"particle"		"particles/units/heroes/hero_witchdoctor/witchdoctor_voodoo_restoration_flame.vpcf"
+			"soundfile"		"sounds/weapons/hero/witch_doctor/voodoo_restoration.vsnd"
+			"soundfile"		"sounds/weapons/hero/witch_doctor/voodoo_restoration_loop.vsnd"
+			"soundfile"		"sounds/weapons/hero/witch_doctor/voodoo_restoration_off.vsnd"
+		}
+
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"0.0"
+
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"0"		
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"event"					"0"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"chance"				"100"
+			}
+			"03"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"radius"					"500"
+			}
+			"04"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"heal"						"5"
+			}
+			"05"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"heal_interval"				"0.33 0.33 0.33 0.33"
+			}
+			"06"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"heal_linger"				"0.5"
+			}
+		}
+		
+		"OnSpellStart"
+		{
+			"ApplyModifier"
+			{
+				"ModifierName"	"modifier_voodoo_restoration_datadriven"
+				"Target"		"CASTER"
+			}
+		}
+		
+		"Modifiers"
+		{
+			"modifier_voodoo_restoration_datadriven"
+			{
+				"Aura"					"modifier_voodoo_restoration_buff"
+				"Aura_Radius"			"%radius"
+				"Aura_Teams"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+				"Aura_Types"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP | DOTA_UNIT_TARGET_MECHANICAL"
+				"OnCreated"
+				{
+					"AttachEffect"
+					{
+						"EffectName"		"particles/units/heroes/hero_witchdoctor/witchdoctor_voodoo_restoration_flame.vpcf"
+						"EffectAttachType"	"follow_origin"
+						"Target"			"CASTER"
+						"ControlPoints"
+						{
+							"00" "0 0 0"
+							"01" "%radius %radius %radius"
+						}
+					}
+					
+					"AttachEffect"
+					{
+						"Target"			"CASTER"
+						"EffectName"		"particles/units/heroes/hero_witchdoctor/witchdoctor_voodoo_restoration_flame.vpcf"
+						"EffectAttachType"	"follow_hitloc"
+						 "ControlPointEntities"
+						{
+							"CASTER" "attach_staff"
+							"CASTER" "attach_staff"
+							"CASTER" "attach_staff"
+						}
+					}
+				}
+				
+			}
+			
+			"modifier_voodoo_restoration_buff"
+			{
+				"Duration"	"%heal_linger"
+			
+				"ThinkInterval"		"%heal_interval"
+				"OnIntervalThink"
+				{
+					"Heal"
+					{
+						"HealAmount"	"%heal"
+						"Target"		"TARGET"
+					}
+				}
+			}
+		}
+	}
+	"save_ability"
+	{
+		"BaseClass"             "ability_datadriven"
+		"AbilityTextureName"    "vgui/hud/heroportraits/portrait_zuus"
+		"AbilityBehavior"      "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"OnSpellStart"
+		{
+			"SpawnUnit"{
+				"UnitName"	"npc_dota_creature_zeus_test"
+				"UnitCount" "1"
+				"UnitLimit" "3"
+				"SpawnRadius" "5"
+				"Duration" ""
+				"Target" "CASTER"
+				"GrantsGold" "100"
+				"GrantsXP"	"100"
+			}
+		}
+	}
+	"meepo_create"
+	{
+		// Основное
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"             	"ability_datadriven"
+		"AbilityBehavior"       	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"MaxLevel"					"1"
+		"AbilityTextureName"    	"addonName_texture_meepo"
+		//"AbilitySharedCooldown"	"5"
+		"AbilityCooldown" 			"2"
+		"AbilityManaCost"			"5"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"addonName_unitID" 	"3"				//указание кого создавать по номеру TODO: составить список юнитов 
+			}
+		}
+		"OnSpellStart"
+		{
+			"RunScript" 
+			{
+				"ScriptFile" "create_unit.lua"
+				"Function"	"UnitCreate"
+			}
+		}
+	}
+	"techies_create"
+	{
+		// Основное
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"             	"ability_datadriven"
+		"AbilityBehavior"       	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"MaxLevel"					"1"
+		"AbilityTextureName"    	"addonName_texture_techies"
+		"AbilityCooldown" 			"15"
+		"AbilityManaCost"			"40"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"addonName_unitID" 	"4"				//указание кого создавать по номеру TODO: составить список юнитов 
+			}
+		}
+		"OnSpellStart"
+		{
+			"RunScript" 
+			{
+				"ScriptFile" 	"create_unit.lua"
+				"Function"		"UnitCreate"
+			}
+		}
+	}	
+	"zuus_create"
+	{
+		// Основное
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"             "ability_datadriven"
+		"AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET "
+		"MaxLevel"				"1"
+		"AbilityTextureName"    "addonName_texture_zuus"
+		//"AbilityTextureName"    "vgui/hud/heroportraits/portrait_zuus"
+		//"AbilitySharedCooldown"			"5"
+		"AbilityCooldown" 		"5"
+		"AbilityManaCost"				"20"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"addonName_unitID" 	"2"				//указание кого создавать по номеру TODO: составить список юнитов 
+			}
+		}
+		"OnSpellStart"
+		{
+			"RunScript" 
+			{
+				"ScriptFile" "create_unit.lua"
+				"Function"	"UnitCreate"
+			}
+		}
+	}
+	"phoenix_create"
+	{
+		// Основное
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"             "ability_datadriven"
+		"AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"MaxLevel"				"1"
+		"AbilityTextureName"    "addonName_texture_phoenix"
+		"AbilityCooldown" 		"10"
+		"AbilityManaCost"		"25"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"addonName_unitID" 	"5"				//указание кого создавать по номеру TODO: составить список юнитов 
+			}
+		}
+		"OnSpellStart"
+		{
+			"RunScript" 
+			{
+				"ScriptFile"	"create_unit.lua"
+				"Function"		"UnitCreate"
+			}
+		}
+	}
+	
+	"test_ability"
+	{
+		// Основное
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"             	"ability_datadriven"
+		"AbilityBehavior"       	"DOTA_ABILITY_BEHAVIOR_NO_TARGET "
+		"MaxLevel"					"1"
+		"AbilityTextureName"    	"addonName_texture_witch_doctor"
+		"AbilityCooldown" 				"10"
+		"AbilityManaCost"				"40"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"addonName_unitID" 	"1"				//указание кого создавать по номеру TODO: составить список юнитов 
+			}
+		}
+		"OnSpellStart"
+		{
+			"RunScript" 
+			{
+				"ScriptFile" "create_unit.lua"
+				"Function"	"UnitCreate"
+			}
+		}
+	}
+}
+
+

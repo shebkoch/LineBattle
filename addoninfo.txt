@@ -1,0 +1,9 @@
+"AddonInfo"
+{
+	"maps"      "pvp"
+	"IsPlayable"  "1"
+	"pvp"
+	{
+          "MaxPlayers"                    "2"
+	}
+}

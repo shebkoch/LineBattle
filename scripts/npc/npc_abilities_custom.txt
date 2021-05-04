@@ -1,0 +1,341 @@
+#base "npc_units_abilities.txt"
+"DOTAAbilities"
+{
+	"Version"		"1"
+	"techies_create"{
+
+    "BaseClass" "ability_datadriven"
+    "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+    "MaxLevel" "1"
+"AbilityTextureName" "addonName_texture_techies"
+"AbilityCooldown" "10"
+"AbilityManaCost" "20"
+"AbilitySpecial"
+    {
+    "01"
+    {
+    "var_type" "FIELD_INTEGER"
+    "addonName_unitID" "1"
+}
+}"OnSpellStart"
+    {
+    "RunScript" 
+    {
+    "ScriptFile" "create_unit.lua"
+    "Function"	"UnitCreate"
+    }
+    }
+    }
+"meepo_create"{
+
+    "BaseClass" "ability_datadriven"
+    "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+    "MaxLevel" "1"
+"AbilityTextureName" "addonName_texture_meepo"
+"AbilityCooldown" "9"
+"AbilityManaCost" "16"
+"AbilitySpecial"
+    {
+    "01"
+    {
+    "var_type" "FIELD_INTEGER"
+    "addonName_unitID" "2"
+}
+}"OnSpellStart"
+    {
+    "RunScript" 
+    {
+    "ScriptFile" "create_unit.lua"
+    "Function"	"UnitCreate"
+    }
+    }
+    }
+"witch_doctor_create"{
+
+    "BaseClass" "ability_datadriven"
+    "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+    "MaxLevel" "1"
+"AbilityTextureName" "addonName_texture_witch_doctor"
+"AbilityCooldown" "18"
+"AbilityManaCost" "20"
+"AbilitySpecial"
+    {
+    "01"
+    {
+    "var_type" "FIELD_INTEGER"
+    "addonName_unitID" "3"
+}
+}"OnSpellStart"
+    {
+    "RunScript" 
+    {
+    "ScriptFile" "create_unit.lua"
+    "Function"	"UnitCreate"
+    }
+    }
+    }
+"zeus_create"{
+
+    "BaseClass" "ability_datadriven"
+    "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+    "MaxLevel" "1"
+"AbilityTextureName" "addonName_texture_zeus"
+"AbilityCooldown" "7"
+"AbilityManaCost" "16"
+"AbilitySpecial"
+    {
+    "01"
+    {
+    "var_type" "FIELD_INTEGER"
+    "addonName_unitID" "4"
+}
+}"OnSpellStart"
+    {
+    "RunScript" 
+    {
+    "ScriptFile" "create_unit.lua"
+    "Function"	"UnitCreate"
+    }
+    }
+    }
+"elder_titan_create"{
+
+    "BaseClass" "ability_datadriven"
+    "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+    "MaxLevel" "1"
+"AbilityTextureName" "addonName_texture_elder_titan"
+"AbilityCooldown" "35"
+"AbilityManaCost" "30"
+"AbilitySpecial"
+    {
+    "01"
+    {
+    "var_type" "FIELD_INTEGER"
+    "addonName_unitID" "5"
+}
+}"OnSpellStart"
+    {
+    "RunScript" 
+    {
+    "ScriptFile" "create_unit.lua"
+    "Function"	"UnitCreate"
+    }
+    }
+    }
+"tidehunter_create"{
+
+    "BaseClass" "ability_datadriven"
+    "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+    "MaxLevel" "1"
+"AbilityTextureName" "addonName_texture_tidehunter"
+"AbilityCooldown" "10"
+"AbilityManaCost" "21"
+"AbilitySpecial"
+    {
+    "01"
+    {
+    "var_type" "FIELD_INTEGER"
+    "addonName_unitID" "6"
+}
+}"OnSpellStart"
+    {
+    "RunScript" 
+    {
+    "ScriptFile" "create_unit.lua"
+    "Function"	"UnitCreate"
+    }
+    }
+    }
+"dazzle_create"{
+
+    "BaseClass" "ability_datadriven"
+    "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+    "MaxLevel" "1"
+"AbilityTextureName" "addonName_texture_dazzle"
+"AbilityCooldown" "20"
+"AbilityManaCost" "20"
+"AbilitySpecial"
+    {
+    "01"
+    {
+    "var_type" "FIELD_INTEGER"
+    "addonName_unitID" "7"
+}
+}"OnSpellStart"
+    {
+    "RunScript" 
+    {
+    "ScriptFile" "create_unit.lua"
+    "Function"	"UnitCreate"
+    }
+    }
+    }
+"monkey_king_create"{
+
+    "BaseClass" "ability_datadriven"
+    "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+    "MaxLevel" "1"
+"AbilityTextureName" "addonName_texture_monkey_king"
+"AbilityCooldown" "12"
+"AbilityManaCost" "22"
+"AbilitySpecial"
+    {
+    "01"
+    {
+    "var_type" "FIELD_INTEGER"
+    "addonName_unitID" "8"
+}
+}"OnSpellStart"
+    {
+    "RunScript" 
+    {
+    "ScriptFile" "create_unit.lua"
+    "Function"	"UnitCreate"
+    }
+    }
+    }
+"kunkka_create"{
+
+    "BaseClass" "ability_datadriven"
+    "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+    "MaxLevel" "1"
+"AbilityTextureName" "addonName_texture_kunkka"
+"AbilityCooldown" "8"
+"AbilityManaCost" "18"
+"AbilitySpecial"
+    {
+    "01"
+    {
+    "var_type" "FIELD_INTEGER"
+    "addonName_unitID" "9"
+}
+}"OnSpellStart"
+    {
+    "RunScript" 
+    {
+    "ScriptFile" "create_unit.lua"
+    "Function"	"UnitCreate"
+    }
+    }
+    }
+"enigma_create"{
+
+    "BaseClass" "ability_datadriven"
+    "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+    "MaxLevel" "1"
+"AbilityTextureName" "addonName_texture_enigma"
+"AbilityCooldown" "25"
+"AbilityManaCost" "30"
+"AbilitySpecial"
+    {
+    "01"
+    {
+    "var_type" "FIELD_INTEGER"
+    "addonName_unitID" "10"
+}
+}"OnSpellStart"
+    {
+    "RunScript" 
+    {
+    "ScriptFile" "create_unit.lua"
+    "Function"	"UnitCreate"
+    }
+    }
+    }
+"centaur_create"{
+
+    "BaseClass" "ability_datadriven"
+    "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+    "MaxLevel" "1"
+"AbilityTextureName" "addonName_texture_centaur"
+"AbilityCooldown" "20"
+"AbilityManaCost" "20"
+"AbilitySpecial"
+    {
+    "01"
+    {
+    "var_type" "FIELD_INTEGER"
+    "addonName_unitID" "11"
+}
+}"OnSpellStart"
+    {
+    "RunScript" 
+    {
+    "ScriptFile" "create_unit.lua"
+    "Function"	"UnitCreate"
+    }
+    }
+    }
+"DOOM_create"{
+
+    "BaseClass" "ability_datadriven"
+    "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+    "MaxLevel" "1"
+"AbilityTextureName" "addonName_texture_DOOM"
+"AbilityCooldown" "70"
+"AbilityManaCost" "50"
+"AbilitySpecial"
+    {
+    "01"
+    {
+    "var_type" "FIELD_INTEGER"
+    "addonName_unitID" "12"
+}
+}"OnSpellStart"
+    {
+    "RunScript" 
+    {
+    "ScriptFile" "create_unit.lua"
+    "Function"	"UnitCreate"
+    }
+    }
+    }
+"crystal_maiden_create"{
+
+    "BaseClass" "ability_datadriven"
+    "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+    "MaxLevel" "1"
+"AbilityTextureName" "addonName_texture_crystal_maiden"
+"AbilityCooldown" "30"
+"AbilityManaCost" "25"
+"AbilitySpecial"
+    {
+    "01"
+    {
+    "var_type" "FIELD_INTEGER"
+    "addonName_unitID" "13"
+}
+}"OnSpellStart"
+    {
+    "RunScript" 
+    {
+    "ScriptFile" "create_unit.lua"
+    "Function"	"UnitCreate"
+    }
+    }
+    }
+"io_create"{
+
+    "BaseClass" "ability_datadriven"
+    "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+    "MaxLevel" "1"
+"AbilityTextureName" "addonName_texture_io"
+"AbilityCooldown" "70"
+"AbilityManaCost" "50"
+"AbilitySpecial"
+    {
+    "01"
+    {
+    "var_type" "FIELD_INTEGER"
+    "addonName_unitID" "14"
+}
+}"OnSpellStart"
+    {
+    "RunScript" 
+    {
+    "ScriptFile" "create_unit.lua"
+    "Function"	"UnitCreate"
+    }
+    }
+    }
+}

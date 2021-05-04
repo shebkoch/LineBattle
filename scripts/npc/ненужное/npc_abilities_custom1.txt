@@ -1,0 +1,26 @@
+// Dota Heroes File
+"DOTAAbilities"
+{
+	"Version"		"1"
+	"test_ability"
+	{
+		// Основное
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"             "ability_datadriven"
+		"AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityTextureName"    "axe_battle_hunger"
+		"OnSpellStart"
+		{
+			"SpawnUnit"{
+				"UnitName"	"npc_dota_creature_axe_test"
+				"UnitCount" "1"
+				"UnitLimit" "3"
+				"SpawnRadius" "5"
+				"Duration" ""
+				"Target" "CASTER"
+				"GrantsGold" "100"
+				"GrantsXP"	"100"
+			}		
+		}
+	}
+}

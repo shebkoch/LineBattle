@@ -1,0 +1,91 @@
+
+"DOTAUnits"
+{
+	"Version"	"1"
+"npc_addonName_techies"
+{
+"BaseClass"   "npc_dota_creature"
+"AttackRate"  "1.0"
+"AttackRangeBuffer"   "0"
+"ProjectileSpeed" "900"
+"AttackRangeBuffer"   "0"
+"MovementTurnRate"    "0.5"
+"Model"   "models/heroes/techies/techies.mdl"
+"StatusHealth"   "50"
+"MovementSpeed"   "270"
+"AttackRange"   "0"
+"AttackCapabilities"   "DOTA_UNIT_CAP_RANGED_ATTACK"
+"AttackDamageMin"   "0"
+"AttackDamageMax"   "0"
+"Ability1"	"techies_suicide"
+"Creature"
+	    {
+			"AttachWearables"
+			{
+			"Wearable1" { "ItemDef" 487"}
+			"Wearable2" { "ItemDef" 394"}
+			"Wearable3" { "ItemDef" 489"}
+			"Wearable4" { "ItemDef" 490"}
+			"Wearable5" { "ItemDef" 491"}
+			"Wearable6" { "ItemDef" 492"}
+			"Wearable7" { "ItemDef" 499"}
+			}
+		}
+}
+"npc_addonName_meepo"
+{
+"BaseClass"   "npc_dota_creature"
+"AttackRate"  "1.0"
+"AttackRangeBuffer"   "0"
+"ProjectileSpeed" "900"
+"AttackRangeBuffer"   "0"
+"MovementTurnRate"    "0.5"
+"Model"   "models/heroes/meepo/meepo.vmdl"
+"StatusHealth"   "50"
+"MovementSpeed"   "270"
+"AttackRange"   "600"
+"AttackCapabilities"   "DOTA_UNIT_CAP_MELEE_ATTACK"
+"AttackDamageMin"   "15"
+"AttackDamageMax"   "15"
+			}
+		}
+}
+"npc_addonName_witch_doctor"
+{
+"BaseClass"   "npc_dota_creature"
+"AttackRate"  "1.0"
+"AttackRangeBuffer"   "0"
+"ProjectileSpeed" "900"
+"AttackRangeBuffer"   "0"
+"MovementTurnRate"    "0.5"
+"Model"   "models/heroes/witchdoctor/witchdoctor.vmdl"
+"StatusHealth"   "100"
+"MovementSpeed"   "270"
+"AttackRange"   "600"
+"AttackCapabilities"   "DOTA_UNIT_CAP_RANGED_ATTACK"
+"AttackDamageMin"   "50"
+"AttackDamageMax"   "50"
+"Ability1"	"voodoo_restoration"
+			}
+		}
+}
+"npc_addonName_zeus"
+{
+"BaseClass"   "npc_dota_creature"
+"AttackRate"  "1.0"
+"AttackRangeBuffer"   "0"
+"ProjectileSpeed" "900"
+"AttackRangeBuffer"   "0"
+"MovementTurnRate"    "0.5"
+"Model"   "models/heroes/zeus/zeus.vmdl"
+"StatusHealth"   "50"
+"MovementSpeed"   "270"
+"AttackRange"   "600"
+"AttackCapabilities"   "DOTA_UNIT_CAP_RANGED_ATTACK"
+"AttackDamageMin"   "50"
+"AttackDamageMax"   "50"
+"Ability1"	"arc_lightning"
+			}
+		}
+}
+}

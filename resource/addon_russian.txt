@@ -1,0 +1,67 @@
+ "lang"
+{
+"Language" "Russian"
+"Tokens"
+{		
+"addon_game_name"   "Line Battle"
+"npc_dota_hero_axe"					"Tower"
+"DOTA_Tooltip_Ability_manaSkill"  				"Mana"  
+"DOTA_Tooltip_Ability_manaSkill_Description"  	"это повысит твой мана реген"
+"DOTA_Tooltip_Ability_techies_create"  "techies"
+"DOTA_Tooltip_Ability_techies_create_Description"  "
+редкость:    <font color='#D32CE6'>легендарный</font><br>тип:    <font color='#FE2712'>дамагер</font><br>хп:     <font color='#F7FCFE'>очень мало</font><br>скорость передвижения:     <font color='#FEEC86'>средняя</font><br>дальность атаки:     <font color='#F7FCFE'>нет</font><br>тип атаки:     <font color='#F7FCFE'>нет</font><br>урон:     <font color='#F7FCFE'>нет</font><br>
+взрывается после смерти"
+"DOTA_Tooltip_Ability_meepo_create"  "meepo"
+"DOTA_Tooltip_Ability_meepo_create_Description"  "
+редкость:    <font color='#B0C3D9'>обычный</font><br>тип:    <font color='#FE2712'>дамагер</font><br>хп:     <font color='#F7FCFE'>очень мало</font><br>скорость передвижения:     <font color='#FEEC86'>средняя</font><br>дальность атаки:     <font color='#183BF0'>ближник</font><br>тип атаки:     <font color='#183BF0'>ближник</font><br>урон:     <font color='#C0DF81'>низкий</font><br>
+расходный материал их много и не жалко"
+"DOTA_Tooltip_Ability_witch_doctor_create"  "witch doctor"
+"DOTA_Tooltip_Ability_witch_doctor_create_Description"  "
+редкость:    <font color='#D32CE6'>легендарный</font><br>тип:    <font color='#C0DF81'>саппорт</font><br>хп:     <font color='#FEEC86'>средне</font><br>скорость передвижения:     <font color='#FEEC86'>средняя</font><br>дальность атаки:     <font color='#FEEC86'>средняя</font><br>тип атаки:     <font color='#FE2712'>дальник</font><br>урон:     <font color='#FEEC86'>средний</font><br>
+герой с аурой хила"
+"DOTA_Tooltip_Ability_zeus_create"  "zeus"
+"DOTA_Tooltip_Ability_zeus_create_Description"  "
+редкость:    <font color='#B0C3D9'>обычный</font><br>тип:    <font color='#FE2712'>дамагер</font><br>хп:     <font color='#C0DF81'>мало</font><br>скорость передвижения:     <font color='#FEEC86'>средняя</font><br>дальность атаки:     <font color='#C0DF81'>низкая</font><br>тип атаки:     <font color='#FE2712'>дальник</font><br>урон:     <font color='#FEEC86'>средний</font><br>
+с небольшим шансом может пустить перескаивающую по противникам молнию"
+"DOTA_Tooltip_Ability_elder_titan_create"  "elder titan"
+"DOTA_Tooltip_Ability_elder_titan_create_Description"  "
+редкость:    <font color='#D32CE6'>легендарный</font><br>тип:    <font color='#183BF0'>танк</font><br>хп:     <font color='#183BF0'>много</font><br>скорость передвижения:     <font color='#C0DF81'>медленная</font><br>дальность атаки:     <font color='#183BF0'>ближник</font><br>тип атаки:     <font color='#183BF0'>ближник</font><br>урон:     <font color='#FEEC86'>средний</font><br>
+сильный боец который становится сильнее с каждым противником на поле"
+"DOTA_Tooltip_Ability_tidehunter_create"  "tidehunter"
+"DOTA_Tooltip_Ability_tidehunter_create_Description"  "
+редкость:    <font color='#B0C3D9'>обычный</font><br>тип:    <font color='#183BF0'>танк</font><br>хп:     <font color='#183BF0'>много</font><br>скорость передвижения:     <font color='#FEEC86'>средняя</font><br>дальность атаки:     <font color='#183BF0'>ближник</font><br>тип атаки:     <font color='#183BF0'>ближник</font><br>урон:     <font color='#C0DF81'>низкий</font><br>
+Танк блокирующий часть проходящего по нему урона"
+"DOTA_Tooltip_Ability_dazzle_create"  "dazzle"
+"DOTA_Tooltip_Ability_dazzle_create_Description"  "
+редкость:    <font color='#B0C3D9'>обычный</font><br>тип:    <font color='#C0DF81'>саппорт</font><br>хп:     <font color='#C0DF81'>мало</font><br>скорость передвижения:     <font color='#FEEC86'>средняя</font><br>дальность атаки:     <font color='#A33AF2'>высокая</font><br>тип атаки:     <font color='#FE2712'>дальник</font><br>урон:     <font color='#C0DF81'>низкий</font><br>
+Может спасти союзника от смерти"
+"DOTA_Tooltip_Ability_monkey_king_create"  "monkey king"
+"DOTA_Tooltip_Ability_monkey_king_create_Description"  "
+редкость:    <font color='#B0C3D9'>обычный</font><br>тип:    <font color='#FE2712'>дамагер</font><br>хп:     <font color='#FEEC86'>средне</font><br>скорость передвижения:     <font color='#A33AF2'>высокая</font><br>дальность атаки:     <font color='#C0DF81'>низкая</font><br>тип атаки:     <font color='#183BF0'>ближник</font><br>урон:     <font color='#FEEC86'>средний</font><br>
+воин который с каждым ударом атакует сильнее"
+"DOTA_Tooltip_Ability_kunkka_create"  "kunkka"
+"DOTA_Tooltip_Ability_kunkka_create_Description"  "
+редкость:    <font color='#B0C3D9'>обычный</font><br>тип:    <font color='#FE2712'>дамагер</font><br>хп:     <font color='#FEEC86'>средне</font><br>скорость передвижения:     <font color='#A33AF2'>высокая</font><br>дальность атаки:     <font color='#183BF0'>ближник</font><br>тип атаки:     <font color='#183BF0'>ближник</font><br>урон:     <font color='#FE2712'>высокий</font><br>
+может убить даже самых сильных героев "
+"DOTA_Tooltip_Ability_enigma_create"  "enigma"
+"DOTA_Tooltip_Ability_enigma_create_Description"  "
+редкость:    <font color='#B0C3D9'>обычный</font><br>тип:    <font color='#183BF0'>танк</font><br>хп:     <font color='#183BF0'>много</font><br>скорость передвижения:     <font color='#FEEC86'>средняя</font><br>дальность атаки:     <font color='#183BF0'>ближник</font><br>тип атаки:     <font color='#183BF0'>ближник</font><br>урон:     <font color='#C0DF81'>низкий</font><br>
+При получении урона отбрасывает противников"
+"DOTA_Tooltip_Ability_centaur_create"  "centaur"
+"DOTA_Tooltip_Ability_centaur_create_Description"  "
+редкость:    <font color='#D32CE6'>легендарный</font><br>тип:    <font color='#FE2712'>дамагер</font><br>хп:     <font color='#FEEC86'>средне</font><br>скорость передвижения:     <font color='#A33AF2'>высокая</font><br>дальность атаки:     <font color='#183BF0'>ближник</font><br>тип атаки:     <font color='#183BF0'>ближник</font><br>урон:     <font color='#FEEC86'>средний</font><br>
+на максимальной скорости бежит бить трон противника оглушает юнитов по пути"
+"DOTA_Tooltip_Ability_DOOM_create"  "DOOM"
+"DOTA_Tooltip_Ability_DOOM_create_Description"  "
+редкость:    <font color='#D32CE6'>легендарный</font><br>тип:    <font color='#A33AF2'>особый</font><br>хп:     <font color='#183BF0'>много</font><br>скорость передвижения:     <font color='#C0DF81'>медленная</font><br>дальность атаки:     <font color='#183BF0'>ближник</font><br>тип атаки:     <font color='#183BF0'>ближник</font><br>урон:     <font color='#FE2712'>высокий</font><br>
+DOOM"
+"DOTA_Tooltip_Ability_crystal_maiden_create"  "crystal maiden"
+"DOTA_Tooltip_Ability_crystal_maiden_create_Description"  "
+редкость:    <font color='#D32CE6'>легендарный</font><br>тип:    <font color='#FE2712'>дамагер</font><br>хп:     <font color='#C0DF81'>мало</font><br>скорость передвижения:     <font color='#FEEC86'>средняя</font><br>дальность атаки:     <font color='#A33AF2'>высокая</font><br>тип атаки:     <font color='#FE2712'>дальник</font><br>урон:     <font color='#FEEC86'>средний</font><br>
+герой дальнего боя с аое атакой"
+"DOTA_Tooltip_Ability_io_create"  "io"
+"DOTA_Tooltip_Ability_io_create_Description"  "
+редкость:    <font color='#D32CE6'>легендарный</font><br>тип:    <font color='#A33AF2'>особый</font><br>хп:     <font color='#183BF0'>много</font><br>скорость передвижения:     <font color='#C0DF81'>медленная</font><br>дальность атаки:     <font color='#A33AF2'>высокая</font><br>тип атаки:     <font color='#FE2712'>дальник</font><br>урон:     <font color='#FE2712'>высокий</font><br>
+быстро уничтожает полезных юнитов"
+}
+}

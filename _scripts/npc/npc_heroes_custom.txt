@@ -32,7 +32,7 @@
 		//"Ability5" 					"techies_create"
 		//"Ability5" 					"phoenix_create"
 		//"Ability6" 					"addonName_sun_ray"
-		"Model" 					"models/heroes/dragon_knight/dragon_knight.vmdl"
+		"Model" 					"models\buildings\building_racks_melee_reference.mdl"
 		"AttackCapabilities"		""
 		"AttackDamageMin"           "80"
 		"AttackDamageMax"           "80"

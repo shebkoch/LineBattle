@@ -102,15 +102,14 @@ function CAddonTemplateGameMode:OnThink()
 end
 
 function PrecacheEveryThingFromKV( context )
-    -- local kv_files = {  	"scripts/npc/npc_units_custom.txt",
-    --                         "scripts/npc/npc_abilities_custom.txt",
-    --                         "scripts/npc/npc_heroes_custom.txt",
-    --                         "scripts/npc/npc_abilities_override.txt",
-				-- 			"scripts/npc/npc_units_abilities.txt",
-    --                         "npc_items_custom.txt",
-				-- 			"npc_units_abilities"
-    --                       }\
-    local kv_files = {}
+    local kv_files = {  	"scripts/npc/npc_units_custom.txt",
+                            "scripts/npc/npc_abilities_custom.txt",
+                            "scripts/npc/npc_heroes_custom.txt",
+                            "scripts/npc/npc_abilities_override.txt",
+							"scripts/npc/npc_units_abilities.txt",
+                            "npc_items_custom.txt",
+							"npc_units_abilities"
+                          }
     for _, kv in pairs(kv_files) do
         local kvs = LoadKeyValues(kv)
         if kvs then
